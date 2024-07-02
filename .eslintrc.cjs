@@ -37,6 +37,6 @@ module.exports = {
     'react-compiler/react-compiler': 'error',
     'no-var': 'error',
     'prefer-const': 'warn',
-    'no-console': 'warn',
+    'no-console': 'error',
   },
 };
