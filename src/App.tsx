@@ -1,5 +1,5 @@
 import 'normalize.css';
-import './App.css';
+import './App.scss';
 import Home from './views/Home/Home';
 
 function App() {
