@@ -35,6 +35,15 @@ module.exports = {
       },
     ],
     'react-compiler/react-compiler': 'error',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false,
+        },
+      },
+    ],
     'no-var': 'error',
     'prefer-const': 'warn',
     'no-console': ['error', { allow: ['warn', 'error'] }],
