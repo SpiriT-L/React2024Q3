@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Character } from '../../types';
+import Card from '../../components/Cards/Card/Card';
+import styles from './Api.module.scss';
 
 class Api extends Component<{}, { characters: Character[] }> {
   constructor(props: {}) {
@@ -15,7 +17,9 @@ class Api extends Component<{}, { characters: Character[] }> {
 
   async fetchCharacters() {
     try {
-      const response = await fetch('https://rickandmortyapi.com/api/character');
+      const response = await fetch(
+        'https://rickandmortyapi.com/api/character/'
+      );
       if (response.ok) {
         const data = await response.json();
         this.setState({ characters: data.results });
@@ -29,18 +33,32 @@ class Api extends Component<{}, { characters: Character[] }> {
 
   render() {
     const { characters } = this.state;
-
     return (
       <>
         <h1>Rick and Morty Characters</h1>
-        <ul>
+        <Card />
+
+        <ul className={styles.items}>
           {characters.map(character => (
-            <li key={character.id}>
-              <p>{character.name}</p>
-              <p>Status: {character.status}</p>
-              <p>Species: {character.species}</p>
-              <p>Gender: {character.gender}</p>
+            <li key={character.id} className={styles.item}>
+              <h3>{character.name}</h3>
               <img src={character.image} alt={character.name} />
+              <p>
+                <span className={styles.name}>Status:</span>
+                <span className={styles.result}> {character.status}</span>
+              </p>
+              <p>
+                <span className={styles.name}>Species:</span>
+                <span className={styles.result}> {character.species}</span>
+              </p>
+              <p>
+                <span className={styles.name}>Gender:</span>
+                <span className={styles.result}> {character.gender}</span>
+              </p>
+              <p>
+                <span className={styles.name}>Origin:</span>
+                <span className={styles.result}> {character.origin.name}</span>
+              </p>
             </li>
           ))}
         </ul>
