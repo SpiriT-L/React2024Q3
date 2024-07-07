@@ -1,11 +1,16 @@
 import { Component } from 'react';
-import Page from '../../components/Page';
+import Search from '../../components/Search';
+import Header from '../../components/Page/Header/Header';
+import styles from './Home.module.scss';
 
 class Home extends Component {
   render() {
     return (
       <>
-        <Page />
+        <Header title="Home" />
+        <main className={styles.main}>
+          <Search />
+        </main>
       </>
     );
   }
