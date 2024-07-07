@@ -23,9 +23,8 @@ class Home extends Component {
               Error
             </button>
             {this.state.newErr && <Err />}
-
-            <Search />
           </ErrorBoundary>
+          <Search />
         </main>
       </>
     );
