@@ -6,4 +6,7 @@ export interface Character {
   gender: string;
   image: string;
   url: string;
+  origin: {
+    name: string;
+  };
 }
