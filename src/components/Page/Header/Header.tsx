@@ -1,11 +1,16 @@
 import { Component } from 'react';
+import styles from './Header.module.scss';
 
-class Header extends Component {
+interface HeaderProps {
+  title: string;
+}
+
+class Header extends Component<HeaderProps> {
   render() {
     return (
-      <>
-        <header></header>
-      </>
+      <header className={styles.header}>
+        <h1>{this.props.title}</h1>
+      </header>
     );
   }
 }
