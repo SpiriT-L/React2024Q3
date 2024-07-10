@@ -20,7 +20,7 @@ import Input from '../Input';
 // }
 
 import { Component } from 'react';
-import Api from '../../services/Api/Api';
+import Api from '../../services/api/api';
 
 interface MyState {
   inputValue: string;

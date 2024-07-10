@@ -25,7 +25,7 @@ class DataDisplay extends Component<
   }
 
   fetchData = async () => {
-    const api = new Api();
+    const api = new Api([]);
     const characters = await api.fetchData();
     this.setState({ characters, loading: false });
   };
