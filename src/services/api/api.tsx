@@ -1,69 +1,23 @@
 import { Component } from 'react';
-import { Character } from '../../types';
-import Card from '../../components/Cards/Card/Card';
-import styles from './Api.module.scss';
+import { Character } from '../../types/Interface';
 
-class Api extends Component<{}, { characters: Character[] }> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      characters: [],
-    };
-  }
-
-  componentDidMount() {
-    this.fetchCharacters();
-  }
-
-  async fetchCharacters() {
+class Api extends Component<{}, {}> {
+  fetchData = async (): Promise<Character[]> => {
     try {
-      const response = await fetch(
-        'https://rickandmortyapi.com/api/character/'
-      );
-      if (response.ok) {
-        const data = await response.json();
-        this.setState({ characters: data.results });
-      } else {
-        console.error('Error fetching characters:', response.status);
+      const response = await fetch('https://rickandmortyapi.com/api/character');
+      if (!response.ok) {
+        throw new Error('Error during data retrieval');
       }
+      const data = await response.json();
+      return data.results;
     } catch (error) {
-      console.error('Error fetching characters:', error);
+      console.error(error);
+      return [];
     }
-  }
+  };
 
   render() {
-    const { characters } = this.state;
-    return (
-      <>
-        <h1>Rick and Morty Characters</h1>
-        <Card />
-
-        <ul className={styles.items}>
-          {characters.map(character => (
-            <li key={character.id} className={styles.item}>
-              <h3>{character.name}</h3>
-              <img src={character.image} alt={character.name} />
-              <p>
-                <span className={styles.name}>Status:</span>
-                <span className={styles.result}> {character.status}</span>
-              </p>
-              <p>
-                <span className={styles.name}>Species:</span>
-                <span className={styles.result}> {character.species}</span>
-              </p>
-              <p>
-                <span className={styles.name}>Gender:</span>
-                <span className={styles.result}> {character.gender}</span>
-              </p>
-              <p>
-                <span className={styles.name}>Origin:</span>
-                <span className={styles.result}> {character.origin.name}</span>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </>
-    );
+    return null;
   }
 }
 

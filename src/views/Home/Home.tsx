@@ -1,9 +1,9 @@
-import { Component } from 'react';
-import Search from '../../components/Search';
 import Header from '../../components/Page/Header/Header';
-import styles from './Home.module.scss';
+import { Component } from 'react';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import Err from '../../components/ErrorBoundary/Error';
+import DataDisplay from '../../components/DataDisplay/DataDisplay';
+import styles from './Home.module.scss';
 
 class Home extends Component {
   state = {
@@ -23,8 +23,8 @@ class Home extends Component {
               Error
             </button>
             {this.state.newErr && <Err />}
+            <DataDisplay />
           </ErrorBoundary>
-          <Search />
         </main>
       </>
     );

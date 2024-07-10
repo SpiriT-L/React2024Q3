@@ -20,7 +20,7 @@ import Input from '../Input';
 // }
 
 import { Component } from 'react';
-import Api from '../../services/api/api';
+import Api from '../../services/Api/Api';
 
 interface MyState {
   inputValue: string;
@@ -52,7 +52,6 @@ class Search extends Component<{}, MyState> {
           onChange={this.handleInputChange}
           placeholder="Enter something..."
         />
-        {/* Отображение сохраненного значения */}
         <p>Stored value: {localStorage.getItem('myInputValue')}</p>
         <Api />
       </div>
