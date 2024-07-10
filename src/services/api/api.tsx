@@ -33,12 +33,7 @@ class Api extends Component<{}, { loading: boolean }> {
   render() {
     const { loading } = this.state;
 
-    return (
-      <div>
-        {loading ? <p>Loading...</p> : null}
-        {/* Rest of your component logic */}
-      </div>
-    );
+    return <div>{loading ? <p>Loading...</p> : null}</div>;
   }
 }
 

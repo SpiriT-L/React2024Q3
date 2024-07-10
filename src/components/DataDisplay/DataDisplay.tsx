@@ -1,5 +1,5 @@
 import { Component, ChangeEvent, KeyboardEvent } from 'react';
-import Api from '../../services/Api';
+import Api from '../../services/api/api';
 import { Character } from '../../types/Interface';
 import styles from './DataDisplay.module.scss';
 
