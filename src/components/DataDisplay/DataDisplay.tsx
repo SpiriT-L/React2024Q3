@@ -1,5 +1,5 @@
 import { Component, ChangeEvent, KeyboardEvent } from 'react';
-import Api from '../../services/Api/Api';
+import Api from '../../services/Api';
 import { Character } from '../../types/Interface';
 import styles from './DataDisplay.module.scss';
 
@@ -23,6 +23,7 @@ class DataDisplay extends Component<
     }
     this.fetchData();
   }
+
   fetchData = async () => {
     const api = new Api();
     const characters = await api.fetchData();

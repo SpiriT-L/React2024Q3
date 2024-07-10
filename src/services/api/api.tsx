@@ -10,7 +10,6 @@ class Api extends Component<{}, { loading: boolean }> {
   }
 
   componentDidMount() {
-    // Simulate a delay of 500ms (0.5 seconds) before fetching data
     setTimeout(() => {
       this.fetchData();
     }, 500);
