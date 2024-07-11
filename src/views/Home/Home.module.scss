@@ -1,0 +1,37 @@
+.main {
+  padding: 0px 15px 0px 15px;
+}
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 15px;
+  margin: 0 15px 15px 0;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  // width: 100px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #55677d;
+  background-color: #630e0e;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  overflow: hidden;
+  &:focus-visible {
+    box-shadow: 0 0 0 3px lightskyblue;
+  }
+  &:hover {
+    opacity: 0.88;
+  }
+  &:active {
+    line-height: 32px;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+}
