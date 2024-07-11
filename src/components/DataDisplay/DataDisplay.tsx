@@ -1,6 +1,8 @@
-import { Component, ChangeEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, Component, KeyboardEvent } from 'react';
 import Api from '../../services/api/api';
 import { Character } from '../../types/Interface';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 import styles from './DataDisplay.module.scss';
 
 class DataDisplay extends Component<
@@ -54,14 +56,18 @@ class DataDisplay extends Component<
     return (
       <>
         <section>
-          <input
+          <Input
             type="text"
+            title="Search"
             placeholder="Filter the characters..."
             value={filterText}
             onChange={this.handleFilterChange}
             onKeyPress={this.handleKeyPress}
           />
-          <button onClick={this.handleSearch}>Search</button>
+
+          <Button className={styles.btn} onClick={this.handleSearch}>
+            {'Save'}
+          </Button>
         </section>
         {loading ? (
           <p>Loading...</p>
