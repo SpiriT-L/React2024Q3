@@ -9,6 +9,8 @@ class DataDisplay extends Component<
   {},
   { characters: Character[]; loading: boolean; filterText: string }
 > {
+  private searchTimeout: number | null = null;
+
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -39,6 +41,14 @@ class DataDisplay extends Component<
 
   handleSearch = () => {
     localStorage.setItem('filterText', this.state.filterText);
+    this.setState({ loading: true });
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+    this.searchTimeout = window.setTimeout(() => {
+      this.fetchData();
+    }, 100);
   };
 
   handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -70,7 +80,7 @@ class DataDisplay extends Component<
           </Button>
         </section>
         {loading ? (
-          <p>Loading...</p>
+          <p className={styles.load}>Loading...</p>
         ) : (
           <section className={styles.section__dataDisplay}>
             <ul className={styles.items}>
