@@ -1,120 +1,99 @@
-import { ChangeEvent, Component, KeyboardEvent } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import Api from '../../services/api/api';
 import { Character } from '../../types/Interface';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './DataDisplay.module.scss';
 
-class DataDisplay extends Component<
-  {},
-  { characters: Character[]; loading: boolean; filterText: string }
-> {
-  private searchTimeout: number | null = null;
+const DataDisplay: React.FC = () => {
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filterText, setFilterText] = useState('');
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      characters: [],
-      loading: true,
-      filterText: '',
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const savedFilterText = localStorage.getItem('filterText');
     if (savedFilterText) {
-      this.setState({ filterText: savedFilterText });
+      setFilterText(savedFilterText);
     }
-    this.fetchData();
-  }
+  }, []);
 
-  fetchData = async () => {
-    const api = new Api([]);
-    const characters = await api.fetchData();
-    this.setState({ characters, loading: false });
+  const handleFetchData = (data: Character[]) => {
+    setCharacters(data);
+    setLoading(false);
   };
 
-  handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    this.setState({ filterText: inputValue });
+    setFilterText(inputValue);
   };
 
-  handleSearch = () => {
-    localStorage.setItem('filterText', this.state.filterText);
-    this.setState({ loading: true });
-
-    if (this.searchTimeout) {
-      clearTimeout(this.searchTimeout);
-    }
-    this.searchTimeout = window.setTimeout(() => {
-      this.fetchData();
-    }, 100);
+  const handleSearch = () => {
+    localStorage.setItem('filterText', filterText);
+    setLoading(true);
   };
 
-  handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      this.handleSearch();
+      handleSearch();
     }
   };
 
-  render() {
-    const { characters, loading, filterText } = this.state;
-    const filteredCharacters = characters.filter(character =>
-      character.name.toLowerCase().includes(filterText.toLowerCase())
-    );
+  const filteredCharacters = characters.filter(character =>
+    character.name.toLowerCase().includes(filterText.toLowerCase())
+  );
 
-    return (
-      <>
-        <section>
-          <Input
-            type="text"
-            title="Search"
-            placeholder="Filter the characters..."
-            value={filterText}
-            onChange={this.handleFilterChange}
-            onKeyPress={this.handleKeyPress}
-          />
+  return (
+    <>
+      <section>
+        <Input
+          type="text"
+          title="Search"
+          placeholder="Filter the characters..."
+          value={filterText}
+          onChange={handleFilterChange}
+          onKeyPress={handleKeyPress}
+        />
 
-          <Button className={styles.btn} onClick={this.handleSearch}>
-            {'Save'}
-          </Button>
+        <Button className={styles.btn} onClick={handleSearch}>
+          {'Save'}
+        </Button>
+      </section>
+      <Api onFetchData={handleFetchData} />
+      {loading ? (
+        <p className={styles.load}>Loading...</p>
+      ) : (
+        <section className={styles.section__dataDisplay}>
+          <ul className={styles.items}>
+            {filteredCharacters.map(character => (
+              <li className={styles.item} key={character.id}>
+                <h3>{character.name}</h3>
+                <img
+                  src={character.image}
+                  alt={character.name}
+                  className={styles.img}
+                />
+                <p className={styles.name}>
+                  Species:
+                  <span> ({character.species})</span>
+                </p>
+                <p className={styles.name}>
+                  Status: <span> {character.status}</span>
+                </p>
+                <p className={styles.name}>
+                  Location:
+                  <span> {character.location.name}</span>
+                </p>
+                <p className={styles.name}>
+                  Origin:
+                  <span> {character.origin.name}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
         </section>
-        {loading ? (
-          <p className={styles.load}>Loading...</p>
-        ) : (
-          <section className={styles.section__dataDisplay}>
-            <ul className={styles.items}>
-              {filteredCharacters.map(character => (
-                <li className={styles.item} key={character.id}>
-                  <h3>{character.name}</h3>
-                  <img
-                    src={character.image}
-                    alt={character.name}
-                    className={styles.img}
-                  />
-                  <p className={styles.name}>
-                    Species:
-                    <span> ({character.species})</span>
-                  </p>
-                  <p className={styles.name}>
-                    Status: <span> {character.status}</span>
-                  </p>
-                  <p className={styles.name}>
-                    Location:
-                    <span> {character.location.name}</span>
-                  </p>
-                  <p className={styles.name}>
-                    Origin:
-                    <span> {character.origin.name}</span>
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </>
-    );
-  }
-}
+      )}
+    </>
+  );
+};
 
 export default DataDisplay;
