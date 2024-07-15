@@ -1,34 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Character } from '../../types/Interface';
 
-interface ApiProps {
-  onFetchData: (data: Character[]) => void;
-}
-
-const Api: React.FC<ApiProps> = ({ onFetchData }) => {
+const useApi = () => {
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Character[]>([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetchData();
-    }, 500);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://rickandmortyapi.com/api/character'
+        );
+        if (!response.ok) {
+          throw new Error('Error during data retrieval');
+        }
+        const data = await response.json();
+        setData(data.results);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(fetchData, 100);
   }, []);
 
-  const fetchData = async (): Promise<void> => {
-    try {
-      const response = await fetch('https://rickandmortyapi.com/api/character');
-      if (!response.ok) {
-        throw new Error('Error during data retrieval');
-      }
-      const data = await response.json();
-      setLoading(false);
-      onFetchData(data.results);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return <div>{loading ? <p>Loading...</p> : null}</div>;
+  return { loading, data };
 };
 
-export default Api;
+export default useApi;
