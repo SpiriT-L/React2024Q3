@@ -1,14 +1,12 @@
-import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
-import Api from '../../services/api/api';
-import { Character } from '../../types/Interface';
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import useApi from '../../services/api/api';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './DataDisplay.module.scss';
 
-const DataDisplay: React.FC = () => {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [loading, setLoading] = useState(true);
+const DataDisplay = () => {
   const [filterText, setFilterText] = useState('');
+  const { data: characters, loading } = useApi();
 
   useEffect(() => {
     const savedFilterText = localStorage.getItem('filterText');
@@ -17,19 +15,12 @@ const DataDisplay: React.FC = () => {
     }
   }, []);
 
-  const handleFetchData = (data: Character[]) => {
-    setCharacters(data);
-    setLoading(false);
-  };
-
   const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setFilterText(inputValue);
+    setFilterText(event.target.value);
   };
 
   const handleSearch = () => {
     localStorage.setItem('filterText', filterText);
-    setLoading(true);
   };
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -58,7 +49,6 @@ const DataDisplay: React.FC = () => {
           {'Save'}
         </Button>
       </section>
-      <Api onFetchData={handleFetchData} />
       {loading ? (
         <p className={styles.load}>Loading...</p>
       ) : (
