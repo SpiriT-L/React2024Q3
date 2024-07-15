@@ -1,33 +1,12 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import useApi from '../../services/api/api';
-import Button from '../Button/Button';
-import Input from '../Input/Input';
 import styles from './DataDisplay.module.scss';
 
-const DataDisplay = () => {
-  const [filterText, setFilterText] = useState('');
+interface DataDisplayProps {
+  filterText: string;
+}
+
+const DataDisplay: React.FC<DataDisplayProps> = ({ filterText }) => {
   const { data: characters, loading } = useApi();
-
-  useEffect(() => {
-    const savedFilterText = localStorage.getItem('filterText');
-    if (savedFilterText) {
-      setFilterText(savedFilterText);
-    }
-  }, []);
-
-  const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFilterText(event.target.value);
-  };
-
-  const handleSearch = () => {
-    localStorage.setItem('filterText', filterText);
-  };
-
-  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
 
   const filteredCharacters = characters.filter(character =>
     character.name.toLowerCase().includes(filterText.toLowerCase())
@@ -35,20 +14,6 @@ const DataDisplay = () => {
 
   return (
     <>
-      <section>
-        <Input
-          type="text"
-          title="Search"
-          placeholder="Filter the characters..."
-          value={filterText}
-          onChange={handleFilterChange}
-          onKeyPress={handleKeyPress}
-        />
-
-        <Button className={styles.btn} onClick={handleSearch}>
-          {'Save'}
-        </Button>
-      </section>
       {loading ? (
         <p className={styles.load}>Loading...</p>
       ) : (
