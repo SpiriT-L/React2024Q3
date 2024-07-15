@@ -1,4 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useEffect } from 'react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './SearchFilter.module.scss';
@@ -12,19 +13,20 @@ const SearchFilter: React.FC<SearchFilterProps> = ({
   filterText,
   setFilterText,
 }) => {
+  const [storedValue, setValue] = useLocalStorage('filterText', '');
+
   useEffect(() => {
-    const savedFilterText = localStorage.getItem('filterText');
-    if (savedFilterText) {
-      setFilterText(savedFilterText);
+    if (storedValue) {
+      setFilterText(storedValue);
     }
-  }, [setFilterText]);
+  }, [storedValue, setFilterText]);
 
   const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFilterText(event.target.value);
   };
 
   const handleSearch = () => {
-    localStorage.setItem('filterText', filterText);
+    setValue(filterText);
   };
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
