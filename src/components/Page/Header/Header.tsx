@@ -1,18 +1,16 @@
-import { Component } from 'react';
+import React from 'react';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
   title: string;
 }
 
-class Header extends Component<HeaderProps> {
-  render() {
-    return (
-      <header className={styles.header}>
-        <h1>{this.props.title}</h1>
-      </header>
-    );
-  }
-}
+const Header: React.FC<HeaderProps> = ({ title }) => {
+  return (
+    <header className={styles.header}>
+      <h1>{title}</h1>
+    </header>
+  );
+};
 
 export default Header;
