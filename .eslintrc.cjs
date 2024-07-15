@@ -46,6 +46,5 @@ module.exports = {
     ],
     'no-var': 'error',
     'prefer-const': 'warn',
-    'no-console': ['error', { allow: ['warn', 'error'] }],
   },
 };
