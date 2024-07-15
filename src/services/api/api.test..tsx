@@ -1,4 +1,3 @@
-// useApi.test.tsx
 import { render, screen, waitFor } from '@testing-library/react';
 import { useEffect, useState } from 'react';
 import useApi from './api';
