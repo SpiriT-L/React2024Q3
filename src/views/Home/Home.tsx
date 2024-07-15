@@ -1,4 +1,3 @@
-// Home.tsx
 import { useState } from 'react';
 import Button from '../../components/Button/Button';
 import DataDisplay from '../../components/DataDisplay/DataDisplay';
