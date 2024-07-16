@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import SearchFilter from './SearchFilter';
 
 test('SearchFilter component renders correctly', () => {
-  const setFilterText = (text: string) => {};
+  const setFilterText = () => {};
   render(<SearchFilter filterText="" setFilterText={setFilterText} />);
 
   const inputElement = screen.getByPlaceholderText('Filter the characters...');
