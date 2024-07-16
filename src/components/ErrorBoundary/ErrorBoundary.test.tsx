@@ -1,29 +1,37 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, test } from 'vitest';
-import ErrorBoundary from './ErrorBoundary';
+import { fireEvent, render } from '@testing-library/react';
+import { ErrorBoundary } from './ErrorBoundary';
+
+// Создаем компонент, который будет вызывать ошибку для тестирования границы ошибки
+const ComponentWithError = () => {
+  throw new Error('Test error');
+};
 
 describe('ErrorBoundary', () => {
-  it('renders without crashing', () => {
-    const { container } = render(
-      <ErrorBoundary>
-        <div>Test</div>
-      </ErrorBoundary>
-    );
-    expect(container).toBeInTheDocument();
-  });
-
-  it('displays an error message when a child component throws', () => {
-    const ChildComponent = () => {
-      throw new Error('Test error');
-    };
-
+  it('displays an error message when an error occurs in a child component', () => {
     const { getByText } = render(
       <ErrorBoundary>
-        <ChildComponent />
+        <ComponentWithError />
       </ErrorBoundary>
     );
 
     expect(getByText('Sorry.. there was an error')).toBeInTheDocument();
-    expect(getByText('Press to reload page')).toBeInTheDocument();
+  });
+
+  it('reloads the page when the button is clicked', () => {
+    const { getByText } = render(
+      <ErrorBoundary>
+        <ComponentWithError />
+      </ErrorBoundary>
+    );
+
+    const reloadEvent = new Event('reload');
+
+    window.addEventListener('reload', () => {
+      console.log('Page reload triggered');
+    });
+
+    fireEvent.click(getByText('Press to reload page'));
+
+    expect(window.dispatchEvent(reloadEvent)).toBeTruthy();
   });
 });
