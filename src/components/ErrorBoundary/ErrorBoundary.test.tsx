@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { ErrorBoundary } from './ErrorBoundary';
 
-// Создаем компонент, который будет вызывать ошибку для тестирования границы ошибки
 const ComponentWithError = () => {
   throw new Error('Test error');
 };
