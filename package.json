@@ -56,8 +56,8 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write ."
     ],
-    "src/**/*.{test.js,test.jsx,test.ts,test.tsx,test.json,test.css,test.scss}": [
-      "vitest ."
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
+      "vitest"
     ]
   }
 }
