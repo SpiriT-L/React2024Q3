@@ -3,17 +3,6 @@ import styles from './DataDisplay.module.scss';
 
 interface DataDisplayProps {
   filterText: string;
-  useApi: () => Promise<
-    Array<{
-      id: number;
-      name: string;
-      image: string;
-      species: string;
-      status: string;
-      location: { name: string };
-      origin: { name: string };
-    }>
-  >;
 }
 
 const DataDisplay: React.FC<DataDisplayProps> = ({ filterText }) => {
