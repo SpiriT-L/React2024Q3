@@ -1,15 +1,23 @@
 import 'normalize.css';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.scss';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import Home from './views/Home/Home';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" Component={Home} />
-      </Routes>
-    </Router>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 
