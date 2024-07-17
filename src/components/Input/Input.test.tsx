@@ -1,5 +1,5 @@
-import { describe, it } from 'vitest';
 import { exec } from 'child_process';
+import { describe, it } from 'vitest';
 
 describe('TypeScript', () => {
   it('compiles without errors', () => {
