@@ -1,8 +1,10 @@
-import { useRouteError } from 'react-router-dom';
+import React from 'react';
 
-const ErrorPage: React.FC = () => {
-  const error = useRouteError();
+interface ErrorPageProps {
+  error: string | Error;
+}
 
+const ErrorPage: React.FC<ErrorPageProps> = ({ error }) => {
   if (error instanceof Error) {
     console.error(error);
     return (
@@ -15,7 +17,6 @@ const ErrorPage: React.FC = () => {
       </div>
     );
   } else {
-    // Handle other cases where 'error' is not an instance of Error
     console.error('Unknown error:', error);
     return (
       <div id="error-page">
