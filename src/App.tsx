@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
+import Cards from './components/Card/Cards';
 import SearchFilter from './components/SearchFilter/SearchFilter';
 import { Character, Info } from './types/Interface';
-import Cards from './components/Card/Cards';
 
 const App: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -40,7 +40,7 @@ const App: React.FC = () => {
         </section>
         <section className="section">
           <div className="cards">
-            <Cards />
+            <Cards results={results} />
           </div>
         </section>
       </div>

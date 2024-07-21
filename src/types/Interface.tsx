@@ -4,6 +4,7 @@ export interface Character {
   image: string;
   species: string;
   status: string;
+  gender: string;
   location: {
     name: string;
   };
