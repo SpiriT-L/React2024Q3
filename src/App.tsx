@@ -1,7 +1,30 @@
+import { useEffect, useState } from 'react';
 import './App.scss';
 import SearchFilter from './components/SearchFilter/SearchFilter';
+import { Character, Info } from './types/Interface';
+import Cards from './components/Card/Cards';
 
-function App() {
+const App: React.FC = () => {
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [fetchData, updateFetchedData] = useState<{
+    info: Info;
+    results: Character[];
+  }>({
+    info: { count: 0, pages: 0, next: '', prev: '' }, // Initialize with default values
+    results: [],
+  });
+  const { results } = fetchData;
+  console.log(results);
+  console.log(setPageNumber);
+  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch(api);
+      const data: { info: Info; results: Character[] } = await response.json();
+      updateFetchedData(data);
+    })();
+  }, [api]);
   return (
     <>
       <div className="container">
@@ -17,14 +40,12 @@ function App() {
         </section>
         <section className="section">
           <div className="cards">
-            <div className="card">Card</div>
-            <div className="card">Card</div>
-            <div className="card">Card</div>
+            <Cards />
           </div>
         </section>
       </div>
     </>
   );
-}
+};
 
 export default App;

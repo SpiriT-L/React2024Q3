@@ -1,14 +1,14 @@
 import React from 'react';
 import { Character } from '../../types/Interface';
-import styles from './Card.module.scss';
+import styles from './Cards.module.scss';
 
 interface CardProps {
-  character?: Character; // Добавляем знак вопроса, чтобы указать, что character может быть undefined.
+  character?: Character;
 }
 
 const Card: React.FC<CardProps> = ({ character }) => {
   if (!character) {
-    return <div>Loading...</div>; // Можно заменить на другое сообщение или индикатор загрузки
+    return <div>Loading...</div>;
   }
 
   return (
