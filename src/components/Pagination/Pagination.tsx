@@ -1,32 +1,41 @@
+import React from 'react';
+import ReactPaginate from 'react-paginate';
+import { Info } from '../../types/Interface';
 import styles from './Pagination.module.scss';
+
 interface PaginationProps {
+  info: Info | undefined;
   pageNumber: number;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  setPageNumber: (pageNumber: number) => void;
 }
+
 const Pagination: React.FC<PaginationProps> = ({
+  info,
   pageNumber,
   setPageNumber,
 }) => {
-  const next = () => {
-    setPageNumber(x => x + 1);
-  };
-
-  const prev = () => {
-    if (pageNumber === 1) return;
-
-    setPageNumber(x => x - 1);
-  };
-
   return (
     <div className="container">
       <div className={styles.pagination}>
-        <button onClick={prev} className={`${styles.btnPrimary} ${styles.btn}`}>
-          Prev
-        </button>
-        <div className={styles.number}>{pageNumber}</div>
-        <button onClick={next} className={`${styles.btnPrimary} ${styles.btn}`}>
-          Next
-        </button>
+        <ReactPaginate
+          previousLabel={'Prev'}
+          nextLabel={'Next'}
+          forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
+          className={styles.pagination}
+          pageCount={info?.pages || 0}
+          nextClassName={`${styles.btnPrimary} ${styles.btn}`}
+          nextLinkClassName={styles.nextLink}
+          previousLinkClassName={styles.previousLink}
+          previousClassName={`${styles.btnPrimary} ${styles.btn}`}
+          activeClassName={styles.active}
+          activeLinkClassName={styles.activeLink}
+          pageClassName={styles.number}
+          pageLinkClassName={styles.pageLink}
+          breakLinkClassName={styles.breakLink}
+          onPageChange={data => {
+            setPageNumber(data.selected + 1);
+          }}
+        />
       </div>
     </div>
   );

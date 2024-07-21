@@ -8,14 +8,14 @@ $bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 
 .btn {
   border: none;
-  width: 100px;
+  width: 70px;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   font-size: 0.75em;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -24,31 +24,80 @@ $bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     background: $bs-btn-hover-bg;
     border-color: $bs-btn-hover-border-color;
     box-shadow: $bs-btn-focus-shadow-rgb;
+    color: #fff;
   }
   &:active {
     background: $bs-btn-active-bg;
     border-color: $bs-btn-active-border-color;
     box-shadow: $bs-btn-active-shadow;
+    color: #fff;
   }
 }
 .btnPrimary {
-  background: $bs-primary;
+  background-color: $bs-primary;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
   padding: 50px 0;
   align-items: center;
+  & li {
+    list-style-type: none;
+  }
 }
 .number {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #0d6efd;
-  color: #fff;
+  border: 1px solid #0d6efd;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #0dfdc9;
+  }
+}
+.pageLink {
+  color: #0d6efd;
+  padding: 25px;
+}
+.active {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #0d6efd;
+  background-color: #0d6efd;
+  & a {
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+.activeLink {
+  color: #fff;
+  padding: 25px;
+}
+.breakLink {
+  cursor: pointer;
+}
+.nextLink,
+.previousLink {
+  position: relative;
+  display: inline-block;
+  color: #fff !important;
+  cursor: pointer;
+  border-radius: 20px;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 20px;
+    width: 112px;
+    height: 38px;
+    top: -10px;
+    left: -43px;
+  }
 }

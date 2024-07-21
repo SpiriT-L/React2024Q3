@@ -46,7 +46,11 @@ const App: React.FC = () => {
             <Cards results={results} />
           </div>
           <div className="pagination">
-            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+            <Pagination
+              info={info}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+            />
           </div>
         </section>
       </div>
