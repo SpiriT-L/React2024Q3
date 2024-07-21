@@ -1,31 +1,29 @@
-import 'normalize.css';
-import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.scss';
-import Card from './components/Card/Card';
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import Footer from './components/Page/Footer/Footer';
-import Header from './components/Page/Header/Header';
-import Home from './views/Home/Home';
+import SearchFilter from './components/SearchFilter/SearchFilter';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-    errorElement: <ErrorPage error={''} />,
-  },
-  {
-    path: 'characters/:contactId',
-    element: <Card character={undefined} />,
-  },
-]);
 function App() {
   return (
-    <React.StrictMode>
-      <Header title={''} />
-      <RouterProvider router={router} />
-      <Footer />
-    </React.StrictMode>
+    <>
+      <div className="container">
+        <div className="title">
+          <h1 className="h1">Rick & Morty</h1>
+        </div>
+      </div>
+      <div className="container">
+        <section className="section">
+          <div className="filter">
+            <SearchFilter />
+          </div>
+        </section>
+        <section className="section">
+          <div className="cards">
+            <div className="card">Card</div>
+            <div className="card">Card</div>
+            <div className="card">Card</div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
 

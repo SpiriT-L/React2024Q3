@@ -2,8 +2,36 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.5;
+  padding: 10px;
+}
+.container {
+  width: 100%;
+  padding: 0 10px;
+  background: #ccc;
+  margin: 0 auto;
+}
+.section {
+  padding: 50px 0;
+}
+.cards {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0.3125rem;
 }
