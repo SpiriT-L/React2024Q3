@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
 import Cards from './components/Card/Cards';
+import Pagination from './components/Pagination/Pagination';
 import SearchFilter from './components/SearchFilter/SearchFilter';
 import { Character, Info } from './types/Interface';
 
@@ -10,10 +11,11 @@ const App: React.FC = () => {
     info: Info;
     results: Character[];
   }>({
-    info: { count: 0, pages: 0, next: '', prev: '' }, // Initialize with default values
+    info: { count: 0, pages: 0, next: '', prev: '' },
     results: [],
   });
-  const { results } = fetchData;
+  const { info, results } = fetchData;
+  console.log(info);
   console.log(results);
   console.log(setPageNumber);
   const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
@@ -41,6 +43,9 @@ const App: React.FC = () => {
         <section className="section">
           <div className="cards">
             <Cards results={results} />
+          </div>
+          <div className="pagination">
+            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
           </div>
         </section>
       </div>
