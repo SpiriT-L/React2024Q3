@@ -45,6 +45,7 @@ const DataDisplay: React.FC<DataDisplayProps> = ({ filterText }) => {
               </li>
             ))}
           </ul>
+          <div id="detail"></div>
         </section>
       )}
     </>
