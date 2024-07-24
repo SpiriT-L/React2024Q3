@@ -10,6 +10,10 @@ $bs-secondary: #6c757d;
   flex-direction: column;
   max-width: 300px;
   padding: 0 0 5px 0;
+  color: #000;
+  &:hover {
+    color: #000;
+  }
   & h2 {
     margin: 5px 0 10px 0;
   }
