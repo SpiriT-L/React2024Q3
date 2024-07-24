@@ -50,7 +50,7 @@ const Location: React.FC = () => {
         <h5 className={styles.titleH5}>Type: {info.type || 'Unknown'}</h5>
       </div>
       <div className={styles.rowDisplay}>
-        <div className={`${styles.pickEpisode}`}>
+        <div className={`${styles.pickLocation}`}>
           <h4>Pick Location</h4>
           <InputGroup setId={setId} name="Location" total={126} />
         </div>
