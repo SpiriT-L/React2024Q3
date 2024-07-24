@@ -35,9 +35,6 @@ const CardDetails: React.FC = () => {
   const { name, image, location, origin, gender, species, status, type } =
     fetchData;
 
-  console.log(location?.name);
-  console.log(origin?.name);
-
   const api = `https://rickandmortyapi.com/api/character/${id}`;
 
   useEffect(() => {

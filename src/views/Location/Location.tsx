@@ -36,7 +36,7 @@ const Location: React.FC = () => {
       setResults(residents);
     })();
   }, [api]);
-  console.log(results);
+
   return (
     <div className="container">
       <div className={styles.rowTitle}>
