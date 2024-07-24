@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Character } from '../../types/Interface';
 import styles from './CardDetails.module.scss';
+
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+  gender: string;
+  species: string;
+  status: string;
+  type: string;
+  location: {
+    name: string;
+  };
+  origin: {
+    name: string;
+  };
+}
 
 const CardDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();

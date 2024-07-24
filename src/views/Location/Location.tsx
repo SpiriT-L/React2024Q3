@@ -56,7 +56,7 @@ const Location: React.FC = () => {
         </div>
         <div className={styles.rowItem}>
           <div className="cards">
-            <Cards results={results} page={'/location/'} />
+            <Cards results={results} page={'/character/'} />
           </div>
         </div>
       </div>

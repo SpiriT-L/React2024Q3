@@ -48,7 +48,7 @@ const Episodes: React.FC = () => {
         </div>
         <div className={styles.rowItem}>
           <div className="cards">
-            <Cards results={results} page={'/episodes/'} />
+            <Cards results={results} page={'/character/'} />
           </div>
         </div>
       </div>

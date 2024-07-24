@@ -9,6 +9,7 @@ import Search from './Search/Search';
 import { Character, Info } from './types/Interface';
 import Episodes from './views/Episodes/Episodes';
 import Location from './views/Location/Location';
+import CardDetails from './components/Card/CardDetails';
 
 function App() {
   return (
@@ -18,8 +19,11 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/location" element={<Location />} />{' '}
+        <Route path="character/:id" element={<CardDetails />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/character/:id" element={<CardDetails />} />
         <Route path="/episodes" element={<Episodes />} />
+        <Route path="/character/:id" element={<CardDetails />} />
       </Routes>
     </Router>
   );
@@ -67,7 +71,7 @@ const Home: React.FC = () => {
       <section className="section">
         <div className="container">
           <div className="cards">
-            <Cards results={results} page={'/'} />
+            <Cards results={results} page={'/character/'} />
           </div>
           <div className="pagination">
             <Pagination
