@@ -1,4 +1,5 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import styles from './Search.module.scss';
 
 interface SearchProps {
@@ -7,10 +8,19 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ setSearch, setPageNumber }) => {
+  const [searchQuery, setSearchQuery] = useLocalStorage('searchQuery', '');
+
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPageNumber(1);
     setSearch(e.target.value);
+    setSearchQuery(e.target.value);
   };
+
+  useEffect(() => {
+    if (searchQuery) {
+      setSearch(searchQuery);
+    }
+  }, [searchQuery]);
 
   return (
     <form className={styles.form}>
@@ -19,6 +29,7 @@ const Search: React.FC<SearchProps> = ({ setSearch, setPageNumber }) => {
         placeholder="Search for Character"
         type="text"
         className={styles.input}
+        value={searchQuery}
       />
       <button
         onClick={e => {
