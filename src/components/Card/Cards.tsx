@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Character } from '../../types/Interface';
 import styles from './Cards.module.scss';
 
 interface CardProps {
   results: Character[];
+  page: string;
 }
 
-const Card: React.FC<CardProps> = ({ results }) => {
+const Card: React.FC<CardProps> = ({ results, page }) => {
   let display;
-  console.log(results);
   if (results) {
     display = results.map(x => {
       const { id, name, image, gender, location, status } = x;
       return (
-        <div key={id} className={styles.cardsItem}>
+        <Link to={`${page}${id}`} key={id} className={styles.cardsItem}>
           <img className={styles.img} src={image} alt={name} />
           <div className={styles.description}>
             <h2>{name}</h2>
@@ -47,7 +48,7 @@ const Card: React.FC<CardProps> = ({ results }) => {
               );
             }
           })()}
-        </div>
+        </Link>
       );
     });
   } else {

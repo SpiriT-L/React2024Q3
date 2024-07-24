@@ -51,8 +51,8 @@ const Home: React.FC = () => {
   }, [api]);
   return (
     <>
-      <div className="container">
-        <section className="section">
+      <section className="section">
+        <div className="container">
           <div className="filter">
             <Search setPageNumber={setPageNumber} setSearch={setSearch} />
             <SearchFilter
@@ -62,10 +62,12 @@ const Home: React.FC = () => {
               setPageNumber={(pageNumber: number) => setPageNumber(pageNumber)}
             />
           </div>
-        </section>
-        <section className="section">
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
           <div className="cards">
-            <Cards results={results} />
+            <Cards results={results} page={'/'} />
           </div>
           <div className="pagination">
             <Pagination
@@ -74,8 +76,8 @@ const Home: React.FC = () => {
               setPageNumber={setPageNumber}
             />
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 };
