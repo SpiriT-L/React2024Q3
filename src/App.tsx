@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.scss';
+import Button from './components/Button/Button';
+import CardDetails from './components/Card/CardDetails';
 import Cards from './components/Card/Cards';
+import Err from './components/ErrorBoundary/Error';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Header from './components/Page/Header/Header';
 import Pagination from './components/Pagination/Pagination';
 import SearchFilter from './components/SearchFilter/SearchFilter';
@@ -9,7 +13,6 @@ import Search from './Search/Search';
 import { Character, Info } from './types/Interface';
 import Episodes from './views/Episodes/Episodes';
 import Location from './views/Location/Location';
-import CardDetails from './components/Card/CardDetails';
 
 function App() {
   return (
@@ -30,6 +33,7 @@ function App() {
 }
 
 const Home: React.FC = () => {
+  const [newErr, setNewErr] = useState(false);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [fetchData, updateFetchedData] = useState<{
     info: Info;
@@ -55,33 +59,49 @@ const Home: React.FC = () => {
   }, [api]);
   return (
     <>
-      <section className="section">
-        <div className="container">
-          <div className="filter">
-            <Search setPageNumber={setPageNumber} setSearch={setSearch} />
-            <SearchFilter
-              setSpecies={setSpecies}
-              setGender={setGender}
-              setStatus={setStatus}
-              setPageNumber={(pageNumber: number) => setPageNumber(pageNumber)}
-            />
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container">
-          <div className="cards">
-            <Cards results={results} page={'/character/'} />
-          </div>
-          <div className="pagination">
-            <Pagination
-              info={info}
-              pageNumber={pageNumber}
-              setPageNumber={setPageNumber}
-            />
-          </div>
-        </div>
-      </section>
+      <main className="main">
+        <ErrorBoundary>
+          {newErr && <Err />}
+          <section className="section">
+            <div className="container">
+              <div className="filter">
+                <Search setPageNumber={setPageNumber} setSearch={setSearch} />
+                <SearchFilter
+                  setSpecies={setSpecies}
+                  setGender={setGender}
+                  setStatus={setStatus}
+                  setPageNumber={(pageNumber: number) =>
+                    setPageNumber(pageNumber)
+                  }
+                />
+              </div>
+            </div>
+          </section>
+          <section className="section">
+            <div className="container">
+              <div className="cards">
+                <Cards results={results} page={'/character/'} />
+              </div>
+
+              <div className="pagination">
+                <Pagination
+                  info={info}
+                  pageNumber={pageNumber}
+                  setPageNumber={setPageNumber}
+                />
+              </div>
+              <Button
+                className="btn"
+                onClick={() => {
+                  setNewErr(true);
+                }}
+              >
+                Error
+              </Button>
+            </div>
+          </section>
+        </ErrorBoundary>
+      </main>
     </>
   );
 };
