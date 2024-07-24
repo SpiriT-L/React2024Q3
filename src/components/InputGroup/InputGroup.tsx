@@ -1,6 +1,12 @@
 import styles from './InputGroup.module.scss';
 
-const InputGroup = ({ total, name, setId }) => {
+interface InputGroupProps {
+  total: number;
+  name: string;
+  setId: (value: string) => void;
+}
+
+const InputGroup: React.FC<InputGroupProps> = ({ total, name, setId }) => {
   return (
     <>
       <div className={styles.inputGroup}>
@@ -9,7 +15,7 @@ const InputGroup = ({ total, name, setId }) => {
           className={styles.formSelect}
           id={name}
         >
-          <option selected>Choose Episode...</option>
+          <option selected>Choose {name}...</option>
 
           {[...Array(total).keys()].map(x => {
             return (
