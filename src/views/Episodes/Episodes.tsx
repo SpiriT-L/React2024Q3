@@ -34,7 +34,7 @@ const Episodes: React.FC = () => {
     <div className="container">
       <div className={styles.rowTitle}>
         <h2 className={styles.titleH2}>
-          Episode:{''}
+          Episode: {''}
           <span className={styles.name}>{info.name || 'Unknown'}</span>
         </h2>
         <h5 className={styles.titleH5}>
