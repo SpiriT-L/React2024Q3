@@ -1,0 +1,30 @@
+.rowTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titleH2 {
+  padding: 20px 0 0 0;
+  margin: 0px 0 10px 0;
+  & .name {
+    font-style: italic;
+    color: #646cff;
+  }
+}
+.titleH5 {
+  margin: 0px 0 20px 0;
+}
+.cardsItems {
+  display: flex;
+}
+.pickEpisode {
+  flex-basis: auto;
+  width: 10%;
+}
+.rowDisplay {
+  display: flex;
+  flex-direction: row;
+}
+.rowItem {
+  width: 90%;
+}
