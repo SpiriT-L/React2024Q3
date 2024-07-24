@@ -1,12 +1,31 @@
 import { useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.scss';
 import Cards from './components/Card/Cards';
+import Header from './components/Page/Header/Header';
 import Pagination from './components/Pagination/Pagination';
 import SearchFilter from './components/SearchFilter/SearchFilter';
 import Search from './Search/Search';
 import { Character, Info } from './types/Interface';
+import Episodes from './views/Episodes/Episodes';
+import Location from './views/Location/Location';
 
-const App: React.FC = () => {
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/location" element={<Location />} />{' '}
+        <Route path="/episodes" element={<Episodes />} />
+      </Routes>
+    </Router>
+  );
+}
+
+const Home: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [fetchData, updateFetchedData] = useState<{
     info: Info;
@@ -20,9 +39,7 @@ const App: React.FC = () => {
   const [status, setStatus] = useState<string>('');
   const [gender, setGender] = useState<string>('');
   const [species, setSpecies] = useState<string>('');
-  console.log(info);
-  console.log(results);
-  console.log(setPageNumber);
+
   const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
   useEffect(() => {
@@ -34,11 +51,6 @@ const App: React.FC = () => {
   }, [api]);
   return (
     <>
-      <div className="container">
-        <div className="title">
-          <h1 className="h1">Rick & Morty</h1>
-        </div>
-      </div>
       <div className="container">
         <section className="section">
           <div className="filter">

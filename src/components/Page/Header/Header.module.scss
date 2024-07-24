@@ -1,3 +1,25 @@
 .header {
   padding: 0px 15px 0px 15px;
 }
+.title {
+  font-family: Ubuntu;
+}
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.ItemsMenu {
+  display: flex;
+  flex-direction: row;
+  gap: 0 10px;
+}
+.itemMenu {
+  list-style: none;
+}
+.active {
+  border-bottom: 2px solid #646cff;
+  font-weight: bold;
+  color: #646cff !important;
+}
