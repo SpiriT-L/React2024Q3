@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Cards from '../../components/Card/Cards';
 import InputGroup from '../../components/InputGroup/InputGroup';
 import { Character } from '../../types/Interface';
-import styles from './Episode.module.scss';
+import styles from './Location.module.scss';
 
 interface LocationInfo {
   name: string;
   type: string;
   dimension: string;
-  Characters: string[];
+  residents: string[];
 }
 
 const Location: React.FC = () => {
@@ -17,11 +17,9 @@ const Location: React.FC = () => {
     name: '',
     type: '',
     dimension: '',
-    Characters: [],
+    residents: [],
   });
   const [results, setResults] = useState<Character[]>([]);
-
-  console.log(results);
 
   const api = `https://rickandmortyapi.com/api/location/${id}`;
 
@@ -30,20 +28,20 @@ const Location: React.FC = () => {
       const data = await fetch(api).then(res => res.json());
       setInfo(data);
 
-      const Characters = await Promise.all(
-        data.Characters.map((x: string) => {
+      const residents = await Promise.all(
+        data.residents.map((x: string) => {
           return fetch(x).then(res => res.json());
         })
       );
-      setResults(Characters);
+      setResults(residents);
     })();
   }, [api]);
-
+  console.log(results);
   return (
     <div className="container">
       <div className={styles.rowTitle}>
         <h2 className={styles.titleH2}>
-          Location:{' '}
+          Location: {''}
           <span className={styles.name}>{info.name || 'Unknown'}</span>
         </h2>
         <h5 className={styles.titleH5}>
