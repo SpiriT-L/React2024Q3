@@ -6,6 +6,7 @@ import CardDetails from './components/Card/CardDetails';
 import Cards from './components/Card/Cards';
 import Err from './components/ErrorBoundary/Error';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import Footer from './components/Page/Footer/Footer';
 import Header from './components/Page/Header/Header';
 import Pagination from './components/Pagination/Pagination';
 import SearchFilter from './components/SearchFilter/SearchFilter';
@@ -17,9 +18,9 @@ import Location from './views/Location/Location';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <ErrorBoundary>
         <Header />
-      </div>
+      </ErrorBoundary>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="character/:id" element={<CardDetails />} />
@@ -28,11 +29,12 @@ function App() {
         <Route path="/episodes" element={<Episodes />} />
         <Route path="/character/:id" element={<CardDetails />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const [newErr, setNewErr] = useState(false);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [fetchData, updateFetchedData] = useState<{
