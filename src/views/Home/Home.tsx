@@ -4,8 +4,8 @@ import Cards from '../../components/Card/Cards';
 import Err from '../../components/ErrorBoundary/Error';
 import { ErrorBoundary } from '../../components/ErrorBoundary/ErrorBoundary';
 import Pagination from '../../components/Pagination/Pagination';
+import Search from '../../components/Search/Search';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
-import Search from '../../Search/Search';
 import { Character, Info } from '../../types/Interface';
 import styles from './Home.module.scss';
 

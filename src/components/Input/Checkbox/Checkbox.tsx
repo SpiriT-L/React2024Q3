@@ -23,6 +23,7 @@ const Checkbox: React.FC = () => {
   return (
     <>
       <input
+        className="inputCheckbox"
         type="checkbox"
         name=""
         id="darkMode"

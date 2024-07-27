@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import styles from './Search.module.scss';
 
 interface SearchProps {
