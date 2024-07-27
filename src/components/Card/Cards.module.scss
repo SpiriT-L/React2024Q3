@@ -58,3 +58,8 @@ $bs-secondary: #6c757d;
 .unknown {
   background: $bs-secondary;
 }
+html[data-theme='dark'] {
+  .cardsItem {
+    color: #ccc;
+  }
+}

@@ -84,4 +84,13 @@ html[data-theme='dark'] {
   &.ardsItem {
     background: #46464e;
   }
+  .accordion-item {
+    &.expanded {
+      background-color: #46464e;
+    }
+  }
+  .form-check-label {
+    margin-left: 5px;
+    color: #fff;
+  }
 }

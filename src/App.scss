@@ -1,3 +1,5 @@
+@import 'index';
+
 #root {
   max-width: 1280px;
   width: 100%;
@@ -26,15 +28,6 @@
 .section {
   padding: 50px 0;
 }
-.cards {
-  background: #fff;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 0.3125rem;
-}
-
 .main {
   padding: 0px 15px 0px 15px;
 }

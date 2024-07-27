@@ -3,11 +3,19 @@
   flex-direction: column;
   align-items: center;
 }
+.cardsItem {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  padding: 0 0 5px;
+}
 .title {
   text-align: center;
 }
 .img {
-  border-radius: 5px;
+  border-radius: 0;
 }
 .badge {
   width: 100%;
@@ -15,7 +23,8 @@
   color: #fff;
   text-align: center;
   padding: 5px 0;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
+  margin: 0 0 10px 0;
 }
 .dead {
   background: #dc3545;
@@ -29,8 +38,14 @@
 .context {
   font-weight: 700;
   margin: 0;
+  padding: 0 5px 5px;
   & span {
     font-weight: normal;
     font-style: italic;
+  }
+}
+html[data-theme='dark'] {
+  .cardsItem {
+    color: #ccc;
   }
 }
