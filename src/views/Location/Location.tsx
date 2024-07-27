@@ -55,7 +55,7 @@ const Location: React.FC = () => {
           <InputGroup setId={setId} name="Location" total={126} />
         </div>
         <div className={styles.rowItem}>
-          <div className="cards">
+          <div className={styles.cards}>
             <Cards results={results} page={'/character/'} />
           </div>
         </div>

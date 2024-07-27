@@ -2,6 +2,9 @@ $bs-success: #198754;
 $bs-danger: #dc3545;
 $bs-secondary: #6c757d;
 
+.cards {
+  display: flex;
+}
 .cardsItem {
   position: relative;
   border: 2px solid #ccc;

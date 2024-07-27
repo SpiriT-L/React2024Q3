@@ -14,6 +14,12 @@
 .titleH5 {
   margin: 0px 0 20px 0;
 }
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
 .cardsItems {
   display: flex;
 }

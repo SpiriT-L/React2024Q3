@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ErrorBoundary } from '../../components/ErrorBoundary/ErrorBoundary';
 import Button from '../../components/Button/Button';
 import Cards from '../../components/Card/Cards';
 import Err from '../../components/ErrorBoundary/Error';
+import { ErrorBoundary } from '../../components/ErrorBoundary/ErrorBoundary';
 import Pagination from '../../components/Pagination/Pagination';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
 import Search from '../../Search/Search';
 import { Character, Info } from '../../types/Interface';
+import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
   const [newErr, setNewErr] = useState(false);
@@ -55,7 +56,7 @@ export const Home: React.FC = () => {
           </section>
           <section className="section">
             <div className="container">
-              <div className="cards">
+              <div className={styles.cards}>
                 <Cards results={results} page={'/character/'} />
               </div>
 

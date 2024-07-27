@@ -47,7 +47,7 @@ const Episodes: React.FC = () => {
           <InputGroup setId={setId} name="Episode" total={51} />
         </div>
         <div className={styles.rowItem}>
-          <div className="cards">
+          <div className={styles.cards}>
             <Cards results={results} page={'/character/'} />
           </div>
         </div>
