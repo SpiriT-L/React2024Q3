@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className="container">
-        <nav className={styles.navBar}>
-          <div className={styles.menu}>
+        <div className={styles.menu}>
+          <nav className={styles.navBar}>
             <h1 className={styles.title}>Rick & Morty</h1>
             <div className={styles.navMenu}>
               <ul className={styles.ItemsMenu}>
@@ -22,11 +22,11 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </nav>
           <div className={styles.checkbox}>
             <Checkbox />
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
