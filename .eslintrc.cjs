@@ -26,7 +26,8 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/prop-types': 'off',
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
+    'react/jsx-indent': ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'prettier/prettier': [
