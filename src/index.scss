@@ -45,3 +45,43 @@ a:hover {
   font-weight: bold;
   color: #646cff !important;
 }
+html[data-theme='light'] {
+  $background-color: #fff;
+}
+
+html[data-theme='dark'] {
+  background-color: #46464e;
+  background: #46464e;
+  color: #000;
+  & h1,
+  h3,
+  h4,
+  h5 {
+    color: #fff;
+  }
+  & input,
+  select {
+    background-color: #46464e;
+    background: #46464e;
+  }
+  & button {
+    &.accordion-button {
+      background-color: #46464e;
+      border-radius: 10px;
+    }
+  }
+  &.accordion-item {
+    background-color: #46464e;
+    border: none;
+    border: 1px solid #46464e;
+  }
+  &.accordion-collapse {
+    background-color: #46464e !important;
+  }
+  &.accordion-body {
+    color: #fff !important;
+  }
+  &.ardsItem {
+    background: #46464e;
+  }
+}
