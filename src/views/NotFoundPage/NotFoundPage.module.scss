@@ -1,0 +1,17 @@
+.notFoundPage {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+  font-size: 2rem;
+}
+.text {
+  text-align: center;
+  padding: 10px;
+  & a {
+    color: #2a09af;
+    font-weight: 700;
+  }
+}
