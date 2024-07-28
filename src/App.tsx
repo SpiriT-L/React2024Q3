@@ -7,23 +7,27 @@ import Header from './components/Page/Header/Header';
 import Episodes from './views/Episodes/Episodes';
 import { Home } from './views/Home/Home';
 import Location from './views/Location/Location';
+import NotFoundPage from './views/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
-    <Router>
-      <ErrorBoundary>
-        <Header />
-      </ErrorBoundary>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="character/:id" element={<CardDetails />} />
-        <Route path="/location" element={<Location />} />
-        <Route path="/character/:id" element={<CardDetails />} />
-        <Route path="/episodes" element={<Episodes />} />
-        <Route path="/character/:id" element={<CardDetails />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      <Router>
+        <ErrorBoundary>
+          <Header />
+        </ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="character/:id" element={<CardDetails />} />
+          <Route path="/location" element={<Location />} />
+          <Route path="/character/:id" element={<CardDetails />} />
+          <Route path="/episodes" element={<Episodes />} />
+          <Route path="/character/:id" element={<CardDetails />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
