@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic);
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg-gradient: linear-gradient(90deg, #2e2e2e, #666666);
+
+  --bg-color-light: #fff;
+  --bg-color-dark: #46464e;
+  --text-color-light: #000;
+  --text-color-dark: #ccc;
+
+  --search-color-light: #fff;
+  --search-color-dark: #7b7474;
+  --searchText-color-light: #46464e;
+  --searchText-color-dark: #fff;
+  --placeholder-color-light: #46464e;
+  --placeholder-color-dark: #fff;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-color-light);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+footer {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+.active {
+  border-bottom: 2px solid #646cff;
+  font-weight: bold;
+  color: #646cff !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: var(--text-color-light) !important;
+}
+input {
+  background-color: var(--search-color-light);
+  color: var(--searchText-color-light);
+}
+input::placeholder {
+  color: var(--placeholder-color-light);
+}

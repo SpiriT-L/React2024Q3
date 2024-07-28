@@ -1,0 +1,40 @@
+.filters {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: end;
+  // height: 12.5rem;
+}
+.clearFilters {
+  cursor: pointer;
+}
+h3 {
+  margin: 0;
+}
+form-check {
+  &-input {
+    margin-right: 8px;
+  }
+
+  &-label {
+    font-size: 14px;
+    color: #333;
+  }
+
+  &-input:checked + &-label {
+    font-weight: bold;
+    color: #007bff;
+  }
+}
+input + label {
+  cursor: pointer;
+}
+.filter-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.625rem;
+}
+.accordion-item {
+  border: none;
+}
