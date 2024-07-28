@@ -40,3 +40,12 @@
   display: flex;
   align-items: center;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.iconLogo {
+  margin: 0 0.625rem 0 0;
+}

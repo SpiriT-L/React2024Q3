@@ -1,22 +1,26 @@
-import { useEffect } from 'react';
-import useTheme from '../../../hooks/useTheme';
+import React, { useEffect } from 'react';
+import {
+  THEME_DARK,
+  THEME_LIGHT,
+  useTheme,
+} from '../../../context/ThemeProvider';
 import './Checkbox.scss';
 import Moon from './moon.svg';
 import Sun from './sun.svg';
 
 const Checkbox: React.FC = () => {
-  const { theme, setTheme } = useTheme();
+  const isTheme = useTheme();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('data-theme');
     if (savedTheme) {
-      setTheme(savedTheme as 'light' | 'dark');
+      isTheme.change(savedTheme as 'light' | 'dark');
     }
   }, []);
 
   const handleToggle = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    const newTheme = isTheme.theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT;
+    isTheme.change(newTheme);
     localStorage.setItem('data-theme', newTheme);
   };
 
@@ -25,10 +29,9 @@ const Checkbox: React.FC = () => {
       <input
         className="inputCheckbox"
         type="checkbox"
-        name=""
-        id="darkMode"
-        checked={theme === 'dark'}
+        checked={isTheme.theme === THEME_DARK}
         onChange={handleToggle}
+        id="darkMode"
       />
       <label className="labelCheckbox" htmlFor="darkMode">
         <img className="sun" src={Sun} alt="Sun" />

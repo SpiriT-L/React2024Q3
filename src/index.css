@@ -17,6 +17,20 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-gradient: linear-gradient(90deg, #2e2e2e, #666666);
+
+  --bg-color-light: #fff;
+  --bg-color-dark: #46464e;
+  --text-color-light: #000;
+  --text-color-dark: #ccc;
+
+  --search-color-light: #fff;
+  --search-color-dark: #7b7474;
+  --searchText-color-light: #46464e;
+  --searchText-color-dark: #fff;
+  --placeholder-color-light: #46464e;
+  --placeholder-color-dark: #fff;
 }
 
 html {
@@ -24,9 +38,13 @@ html {
 }
 
 body {
+  background-color: var(--bg-color-light);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
+  line-height: 1.5;
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -71,4 +89,19 @@ a:hover {
   border-bottom: 2px solid #646cff;
   font-weight: bold;
   color: #646cff !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: var(--text-color-light) !important;
+}
+input {
+  background-color: var(--search-color-light);
+  color: var(--searchText-color-light);
+}
+input::placeholder {
+  color: var(--placeholder-color-light);
 }

@@ -1,14 +1,43 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {
+  THEME_DARK,
+  THEME_LIGHT,
+  useTheme,
+} from '../../../context/ThemeProvider';
 import Checkbox from '../../Input/Checkbox/Checkbox';
 import styles from './Header.module.scss';
+import imgMorty from './img/morty.svg';
+import imgRick from './img/rick.svg';
 
 const Header = () => {
+  const [icon, setIcon] = useState(imgRick);
+  const isTheme = useTheme();
+
+  useEffect(() => {
+    switch (isTheme.theme) {
+      case THEME_LIGHT:
+        setIcon(imgRick);
+
+        break;
+      case THEME_DARK:
+        setIcon(imgMorty);
+        break;
+      default:
+        setIcon(imgRick);
+        break;
+    }
+  }, [isTheme]);
+
   return (
     <header className={styles.header}>
       <div className="container">
         <div className={styles.menu}>
           <nav className={styles.navBar}>
-            <h1 className={styles.title}>Rick & Morty</h1>
+            <div className={styles.logo}>
+              <img className={styles.iconLogo} src={icon} alt="icon" />
+              <h1 className={styles.title}>Rick & Morty</h1>
+            </div>
             <div className={styles.navMenu}>
               <ul className={styles.ItemsMenu}>
                 <li className={styles.itemMenu}>

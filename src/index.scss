@@ -1,3 +1,8 @@
+$bg-color-light: #fff;
+$bg-color-dark: #46464e;
+$text-color-light: #000;
+$text-color-dark: #ccc;
+
 *,
 *::before,
 *::after {
@@ -18,11 +23,7 @@
 html {
   height: 100%;
 }
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+
 header {
   flex: 0 0 auto;
 }

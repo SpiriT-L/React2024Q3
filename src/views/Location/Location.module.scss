@@ -19,6 +19,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1.25rem;
+  @media (max-width: 790px) {
+    justify-content: center;
+  }
 }
 .cardsItems {
   display: flex;
@@ -26,11 +29,22 @@
 .pickLocation {
   flex-basis: auto;
   width: 20%;
+  @media (max-width: 790px) {
+    margin-bottom: 20px;
+    width: 10 0%;
+  }
 }
 .rowDisplay {
   display: flex;
   flex-direction: row;
+  @media (max-width: 790px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 .rowItem {
   width: 90%;
+  @media (max-width: 790px) {
+    width: 100%;
+  }
 }
