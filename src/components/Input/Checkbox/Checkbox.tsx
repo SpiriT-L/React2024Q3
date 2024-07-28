@@ -30,7 +30,7 @@ const Checkbox: React.FC = () => {
         checked={theme === 'dark'}
         onChange={handleToggle}
       />
-      <label htmlFor="darkMode">
+      <label className="labelCheckbox" htmlFor="darkMode">
         <img className="sun" src={Sun} alt="Sun" />
         <img className="moon" src={Moon} alt="Sun" />
       </label>
