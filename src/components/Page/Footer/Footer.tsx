@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
+import discord from '../../../../public/discord.svg';
+import github from '../../../../public/github.svg';
+import rss from '../../../../public/rss.svg';
 import styles from './Footer.module.scss';
-import discord from './img/discord.svg';
-import github from './img/github.svg';
-import rss from './img/rss.svg';
 
 const Footer = () => {
   return (
@@ -14,19 +14,23 @@ const Footer = () => {
               <Link to="//discordapp.com/users/795219921138483201">
                 <img
                   className={styles.discordImg}
-                  src={discord}
+                  src={discord.src}
                   alt="Discord"
                 />
               </Link>
             </div>
             <div className={styles.rss}>
               <Link to="//rs.school/courses/reactjs">
-                <img className={styles.rssImg} src={rss} alt="RS School" />
+                <img className={styles.rssImg} src={rss.src} alt="RS School" />
               </Link>
             </div>
             <div className={styles.github}>
               <Link to="//github.com/SpiriT-L">
-                <img className={styles.githubImg} src={github} alt="GitHub" />
+                <img
+                  className={styles.githubImg}
+                  src={github.src}
+                  alt="GitHub"
+                />
               </Link>
             </div>
           </div>
