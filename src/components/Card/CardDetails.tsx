@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import {
-//   removePersonToFavorite,
-//   setPersonToFavorite,
-// } from '../../store/action/index';
 import styles from './CardDetails.module.scss';
 
 interface Character {

@@ -1,5 +1,8 @@
+'use client';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import imgMorty from '../../../../public/morty.svg';
+import imgRick from '../../../../public/rick.svg';
 import {
   THEME_DARK,
   THEME_LIGHT,
@@ -7,8 +10,6 @@ import {
 } from '../../../context/ThemeProvider';
 import Checkbox from '../../Input/Checkbox/Checkbox';
 import styles from './Header.module.scss';
-import imgMorty from '../../../../public/morty.svg';
-import imgRick from '../../../../public/rick.svg';
 
 const Header = () => {
   const [icon, setIcon] = useState(imgRick);
@@ -18,7 +19,6 @@ const Header = () => {
     switch (isTheme.theme) {
       case THEME_LIGHT:
         setIcon(imgRick);
-
         break;
       case THEME_DARK:
         setIcon(imgMorty);
@@ -41,13 +41,13 @@ const Header = () => {
             <div className={styles.navMenu}>
               <ul className={styles.ItemsMenu}>
                 <li className={styles.itemMenu}>
-                  <NavLink to="/">Character</NavLink>
+                  <Link href="/">Character</Link>
                 </li>
                 <li className={styles.itemMenu}>
-                  <NavLink to="/Location">Location</NavLink>
+                  <Link href="/location">Location</Link>
                 </li>
                 <li className={styles.itemMenu}>
-                  <NavLink to="/Episodes">Episodes</NavLink>
+                  <Link href="/episodes">Episodes</Link>
                 </li>
               </ul>
             </div>

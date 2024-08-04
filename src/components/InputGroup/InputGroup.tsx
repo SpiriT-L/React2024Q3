@@ -11,11 +11,14 @@ const InputGroup: React.FC<InputGroupProps> = ({ total, name, setId }) => {
     <>
       <div className={styles.inputGroup}>
         <select
+          defaultValue="DEFAULT"
           onChange={e => setId(e.target.value)}
           className={styles.formSelect}
           id={name}
         >
-          <option selected>Choose {name}...</option>
+          <option value="DEFAULT" disabled>
+            Choose {name}...
+          </option>
 
           {[...Array(total).keys()].map(x => {
             return (

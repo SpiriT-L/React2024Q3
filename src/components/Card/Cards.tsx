@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Character } from '../../types/Interface';
 import styles from './Cards.module.scss';
 
@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ results, page }) => {
     display = results.map(x => {
       const { id, name, image, gender, location, status } = x;
       return (
-        <Link to={`${page}${id}`} key={id} className={styles.cardsItem}>
+        <Link href={`${page}${id}`} key={id} className={styles.cardsItem}>
           <img className={styles.img} src={image} alt={name} />
           <div className={styles.description}>
             <h2>{name}</h2>

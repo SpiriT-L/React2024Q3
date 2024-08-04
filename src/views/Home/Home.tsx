@@ -1,8 +1,8 @@
+'use client';
 import { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
 import Cards from '../../components/Card/Cards';
 import Err from '../../components/ErrorBoundary/Error';
-import { ErrorBoundary } from '../../components/ErrorBoundary/ErrorBoundary';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
@@ -37,47 +37,45 @@ export const Home: React.FC = () => {
   return (
     <>
       <main className="main">
-        <ErrorBoundary>
-          {newErr && <Err />}
-          <section className="section">
-            <div className="container">
-              <div className="filter">
-                <Search setPageNumber={setPageNumber} setSearch={setSearch} />
-                <SearchFilter
-                  setSpecies={setSpecies}
-                  setGender={setGender}
-                  setStatus={setStatus}
-                  setPageNumber={(pageNumber: number) =>
-                    setPageNumber(pageNumber)
-                  }
-                />
-              </div>
+        {newErr && <Err />}
+        <section className="section">
+          <div className="container">
+            <div className="filter">
+              <Search setPageNumber={setPageNumber} setSearch={setSearch} />
+              <SearchFilter
+                setSpecies={setSpecies}
+                setGender={setGender}
+                setStatus={setStatus}
+                setPageNumber={(pageNumber: number) =>
+                  setPageNumber(pageNumber)
+                }
+              />
             </div>
-          </section>
-          <section className="section">
-            <div className="container">
-              <div className={styles.cards}>
-                <Cards results={results} page={'/character/'} />
-              </div>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container">
+            <div className={styles.cards}>
+              <Cards results={results} page={'/character/'} />
+            </div>
 
-              <div className="pagination">
-                <Pagination
-                  info={info}
-                  pageNumber={pageNumber}
-                  setPageNumber={setPageNumber}
-                />
-              </div>
-              <Button
-                className="btn"
-                onClick={() => {
-                  setNewErr(true);
-                }}
-              >
-                Error
-              </Button>
+            <div className="pagination">
+              <Pagination
+                info={info}
+                pageNumber={pageNumber}
+                setPageNumber={setPageNumber}
+              />
             </div>
-          </section>
-        </ErrorBoundary>
+            <Button
+              className="btn"
+              onClick={() => {
+                setNewErr(true);
+              }}
+            >
+              Error
+            </Button>
+          </div>
+        </section>
       </main>
     </>
   );

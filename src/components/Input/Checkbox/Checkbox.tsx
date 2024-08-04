@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import Moon from '../../../../public/moon.svg';
 import Sun from '../../../../public/sun.svg';
