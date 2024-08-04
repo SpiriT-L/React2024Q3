@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722209452406" clover="3.2.0">
-  <project timestamp="1722209452406" name="All files">
-    <metrics statements="1039" coveredstatements="0" conditionals="39" coveredconditionals="3" methods="39" coveredmethods="3" elements="1117" coveredelements="6" complexity="0" loc="1039" ncloc="1039" packages="30" files="39" classes="39"/>
-    <package name="src">
-      <metrics statements="44" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+<coverage generated="1722771909780" clover="3.2.0">
+  <project timestamp="1722771909780" name="All files">
+    <metrics statements="1031" coveredstatements="0" conditionals="37" coveredconditionals="3" methods="37" coveredmethods="3" elements="1105" coveredelements="6" complexity="0" loc="1031" ncloc="1031" packages="29" files="37" classes="37"/>
+    <package name="React2024Q3">
+      <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="next.config.mjs" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\next.config.mjs">
+        <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="React2024Q3.src">
+      <metrics statements="31" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\App.tsx">
         <metrics statements="31" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
@@ -38,24 +52,52 @@
         <line num="32" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
       </file>
-      <file name="main.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\main.tsx">
-        <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+    </package>
+    <package name="React2024Q3.src.app">
+      <metrics statements="15" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="layout.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\app\layout.tsx">
+        <metrics statements="15" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Button">
+    <package name="React2024Q3.src.app.[[...slug]]">
+      <metrics statements="14" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="client.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\app\[[...slug]]\client.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+      </file>
+      <file name="page.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\app\[[...slug]]\page.tsx">
+        <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="React2024Q3.src.components.Button">
       <metrics statements="9" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="Button.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Button\Button.tsx">
         <metrics statements="9" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -70,7 +112,7 @@
         <line num="22" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Card">
+    <package name="React2024Q3.src.components.Card">
       <metrics statements="119" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="CardDetails.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Card\CardDetails.tsx">
         <metrics statements="73" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -198,7 +240,7 @@
         <line num="60" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.DataDisplay">
+    <package name="React2024Q3.src.components.DataDisplay">
       <metrics statements="41" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="DataDisplay.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\DataDisplay\DataDisplay.tsx">
         <metrics statements="41" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -245,7 +287,7 @@
         <line num="55" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.ErrorBoundary">
+    <package name="React2024Q3.src.components.ErrorBoundary">
       <metrics statements="39" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="Error.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\ErrorBoundary\Error.tsx">
         <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -293,7 +335,7 @@
         <line num="44" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.ErrorPage">
+    <package name="React2024Q3.src.components.ErrorPage">
       <metrics statements="29" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="ErrorPage.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\ErrorPage\ErrorPage.tsx">
         <metrics statements="22" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -331,7 +373,7 @@
         <line num="13" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Input">
+    <package name="React2024Q3.src.components.Input">
       <metrics statements="14" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Input.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Input\Input.tsx">
         <metrics statements="14" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -351,7 +393,7 @@
         <line num="23" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Input.Checkbox">
+    <package name="React2024Q3.src.components.Input.Checkbox">
       <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Checkbox.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Input\Checkbox\Checkbox.tsx">
         <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -391,7 +433,7 @@
         <line num="44" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.InputGroup">
+    <package name="React2024Q3.src.components.InputGroup">
       <metrics statements="21" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="InputGroup.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\InputGroup\InputGroup.tsx">
         <metrics statements="21" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -418,7 +460,7 @@
         <line num="33" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Page.Footer">
+    <package name="React2024Q3.src.components.Page.Footer">
       <metrics statements="36" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Footer.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Page\Footer\Footer.tsx">
         <metrics statements="36" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -460,7 +502,7 @@
         <line num="39" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Page.Header">
+    <package name="React2024Q3.src.components.Page.Header">
       <metrics statements="54" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Header.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Page\Header\Header.tsx">
         <metrics statements="54" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -520,7 +562,7 @@
         <line num="64" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Page.Main">
+    <package name="React2024Q3.src.components.Page.Main">
       <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Main.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Page\Main\Main.tsx">
         <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -534,7 +576,7 @@
         <line num="11" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Pagination">
+    <package name="React2024Q3.src.components.Pagination">
       <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Pagination.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Pagination\Pagination.tsx">
         <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -574,7 +616,7 @@
         <line num="44" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Search">
+    <package name="React2024Q3.src.components.Search">
       <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Search.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\Search\Search.tsx">
         <metrics statements="34" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -614,12 +656,12 @@
         <line num="46" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.SearchFilter">
-      <metrics statements="63" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+    <package name="React2024Q3.src.components.SearchFilter">
+      <metrics statements="64" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="FilterBtn.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\SearchFilter\FilterBtn.tsx">
-        <metrics statements="28" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="29" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -644,8 +686,9 @@
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
       </file>
       <file name="SearchFilter.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\SearchFilter\SearchFilter.tsx">
         <metrics statements="35" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -686,7 +729,7 @@
         <line num="48" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.SearchFilter.Category">
+    <package name="React2024Q3.src.components.SearchFilter.Category">
       <metrics statements="135" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="Gender.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\components\SearchFilter\Category\Gender.tsx">
         <metrics statements="41" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -833,7 +876,7 @@
         <line num="52" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.context">
+    <package name="React2024Q3.src.context">
       <metrics statements="29" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="ThemeProvider.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\context\ThemeProvider.tsx">
         <metrics statements="29" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -868,7 +911,7 @@
         <line num="43" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.hooks">
+    <package name="React2024Q3.src.hooks">
       <metrics statements="33" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="useLocalStorage.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\hooks\useLocalStorage.tsx">
         <metrics statements="24" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -910,7 +953,7 @@
         <line num="13" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.services">
+    <package name="React2024Q3.src.services">
       <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="changeCssVariables.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\services\changeCssVariables.tsx">
         <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -929,7 +972,7 @@
         <line num="16" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.services.api">
+    <package name="React2024Q3.src.services.api">
       <metrics statements="25" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="api.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\services\api\api.tsx">
         <metrics statements="25" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -960,71 +1003,21 @@
         <line num="31" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.store">
-      <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="store.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\store\store.ts">
-        <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.store.action">
-      <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\store\action\index.ts">
-        <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      </file>
-    </package>
-    <package name="src.store.constants">
+    <package name="React2024Q3.src.tests">
       <metrics statements="2" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="actionTypes.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\store\constants\actionTypes.ts">
+      <file name="setup.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\tests\setup.ts">
         <metrics statements="2" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="2" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.store.reducers">
-      <metrics statements="25" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="favoriteReducer.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\store\reducers\favoriteReducer.ts">
-        <metrics statements="23" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-      </file>
-      <file name="index.ts" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\store\reducers\index.ts">
-        <metrics statements="2" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="3" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.types">
+    <package name="React2024Q3.src.types">
       <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="Interface.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\types\Interface.tsx">
         <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       </file>
     </package>
-    <package name="src.views.Episodes">
+    <package name="React2024Q3.src.views.Episodes">
       <metrics statements="46" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Episodes.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\views\Episodes\Episodes.tsx">
         <metrics statements="46" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -1076,17 +1069,7 @@
         <line num="59" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.Favorite">
-      <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Favorite.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\views\Favorite\Favorite.tsx">
-        <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.views.Home">
+    <package name="React2024Q3.src.views.Home">
       <metrics statements="74" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Home.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\views\Home\Home.tsx">
         <metrics statements="74" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -1166,7 +1149,7 @@
         <line num="84" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.Location">
+    <package name="React2024Q3.src.views.Location">
       <metrics statements="52" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Location.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\views\Location\Location.tsx">
         <metrics statements="52" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -1224,7 +1207,7 @@
         <line num="67" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.NotFoundPage">
+    <package name="React2024Q3.src.views.NotFoundPage">
       <metrics statements="18" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="NotFoundPage.tsx" path="D:\FrontEnd\RSSchool\React\React_2024_Q3\React2024Q3\src\views\NotFoundPage\NotFoundPage.tsx">
         <metrics statements="18" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
