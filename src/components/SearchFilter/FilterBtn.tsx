@@ -1,3 +1,4 @@
+import './SearchFilter.module.scss';
 import styles from './SearchFilter.module.scss';
 
 interface FilterBtnProps {

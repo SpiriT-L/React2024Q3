@@ -28,7 +28,7 @@ const Filters: React.FC<FiltersProps> = ({
   return (
     <>
       <div className={styles.filters}>
-        <h3>Filter</h3>
+        <h3 className={styles.title}>Filter</h3>
         <h4 onClick={clear} className={styles.clearFilters}>
           Clear Filters
         </h4>
