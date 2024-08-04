@@ -7,8 +7,8 @@ import {
 } from '../../../context/ThemeProvider';
 import Checkbox from '../../Input/Checkbox/Checkbox';
 import styles from './Header.module.scss';
-import imgMorty from './img/morty.svg';
-import imgRick from './img/rick.svg';
+import imgMorty from '../../../../public/morty.svg';
+import imgRick from '../../../../public/rick.svg';
 
 const Header = () => {
   const [icon, setIcon] = useState(imgRick);
@@ -35,7 +35,7 @@ const Header = () => {
         <div className={styles.menu}>
           <nav className={styles.navBar}>
             <div className={styles.logo}>
-              <img className={styles.iconLogo} src={icon} alt="icon" />
+              <img className={styles.iconLogo} src={icon.src} alt="icon" />
               <h1 className={styles.title}>Rick & Morty</h1>
             </div>
             <div className={styles.navMenu}>
