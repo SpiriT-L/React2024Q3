@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
+import Moon from '../../../../public/moon.svg';
+import Sun from '../../../../public/sun.svg';
 import {
   THEME_DARK,
   THEME_LIGHT,
   useTheme,
 } from '../../../context/ThemeProvider';
-import './Checkbox.scss';
-import Moon from './moon.svg';
-import Sun from './sun.svg';
+import styles from './Checkbox.module.scss';
 
 const Checkbox: React.FC = () => {
   const isTheme = useTheme();
@@ -21,21 +21,22 @@ const Checkbox: React.FC = () => {
   const handleToggle = () => {
     const newTheme = isTheme.theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT;
     isTheme.change(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('data-theme', newTheme);
   };
 
   return (
     <>
       <input
-        className="inputCheckbox"
+        className={styles.inputCheckbox}
         type="checkbox"
         checked={isTheme.theme === THEME_DARK}
         onChange={handleToggle}
         id="darkMode"
       />
-      <label className="labelCheckbox" htmlFor="darkMode">
-        <img className="sun" src={Sun} alt="Sun" />
-        <img className="moon" src={Moon} alt="Sun" />
+      <label className={styles.labelCheckbox} htmlFor="darkMode">
+        <img className={styles.sun} src={Sun.src} alt="Sun" />
+        <img className={styles.moon} src={Moon.src} alt="Moon" />
       </label>
     </>
   );

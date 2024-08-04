@@ -28,10 +28,10 @@
   height: 0;
   visibility: hidden;
 }
-.labelCheckbox:checked + label {
+.labelCheckbox:checked + .labelCheckbox {
   background: #242424;
 }
-input:checked + label:after {
+.inputCheckbox:checked + .labelCheckbox:after {
   left: 49px;
   transform: translateX(-100%);
   background: linear-gradient(180deg, #777, #3a3a3a);
@@ -47,30 +47,30 @@ input:checked + label:after {
   position: absolute;
   transition: 0.3s;
 }
-input:checked + label + .background {
+.inputCheckbox:checked + .labelCheckbox + .background {
   background: #242424;
 }
-label img {
+.labelCheckbox img {
   position: absolute;
   width: 16px;
   top: 2px;
   z-index: 100;
 }
-label img.sun {
+.labelCheckbox img.sun {
   left: 2px;
   top: 2px;
   fill: #fff;
   transition: 0.3s;
 }
-label img.moon {
+.labelCheckbox img.moon {
   left: 32px;
   top: 2px;
   fill: #7e7e7e;
   transition: 0.3s;
-}
-input:checked + label img.sun {
-  fill: #7e7e7e;
-}
-input:checked + label img.moon {
-  fill: #fff;
+  .inputCheckbox:checked + .labelCheckbox img.sun {
+    fill: #7e7e7e;
+  }
+  .inputCheckbox:checked + .labelCheckbox img.moon {
+    fill: #fff;
+  }
 }
