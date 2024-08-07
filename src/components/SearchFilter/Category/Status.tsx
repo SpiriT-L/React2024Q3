@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FilterBtn from '../FilterBtn';
 import './Accordion.scss';
 
@@ -9,13 +9,35 @@ interface StatusProps {
 
 const Status: React.FC<StatusProps> = ({ setPageNumber, setStatus }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const accordionRef = useRef<HTMLDivElement>(null);
+
   const handleButtonClick = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      accordionRef.current &&
+      !accordionRef.current.contains(event.target as Node)
+    ) {
+      setIsExpanded(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const status = ['Alive', 'Dead', 'Unknown'];
 
   return (
-    <div className={`accordion-item ${isExpanded ? 'expanded' : ''}`}>
+    <div
+      ref={accordionRef}
+      className={`accordion-item ${isExpanded ? 'expanded' : ''}`}
+    >
       <h3 className="accordion-header">
         <button
           className={`accordion-button ${isExpanded ? '' : 'collapsed'}`}
@@ -41,6 +63,7 @@ const Status: React.FC<StatusProps> = ({ setPageNumber, setStatus }) => {
               name="status"
               index={index}
               items={items}
+              onClick={() => setIsExpanded(false)}
             />
           ))}
         </div>

@@ -1,8 +1,4 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import styles from './CardDetails.module.scss';
+import styles from './page.module.scss';
 
 interface Character {
   id: number;
@@ -20,31 +16,16 @@ interface Character {
   };
 }
 
-const CardDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const [fetchData, updateFetchedData] = useState<Character>({
-    id: 0,
-    name: '',
-    image: '',
-    gender: '',
-    species: '',
-    status: '',
-    type: '',
-    location: { name: '' },
-    origin: { name: '' },
-  });
+async function fetchCharacter(id: string): Promise<Character> {
+  const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  const character = await res.json();
+  return character;
+}
 
-  const { name, image, location, origin, gender, species, status, type } =
-    fetchData;
-
-  const api = `https://rickandmortyapi.com/api/character/${id}`;
-
-  useEffect(() => {
-    (async function () {
-      const data = await fetch(api).then(res => res.json());
-      updateFetchedData(data);
-    })();
-  }, [api]);
+const CardDetails = async ({ params }: { params: { id: string } }) => {
+  const character = await fetchCharacter(params.id);
+  const { id, name, image, location, origin, gender, species, status, type } =
+    character;
 
   return (
     <main className="main">

@@ -1,4 +1,4 @@
-import './SearchFilter.module.scss';
+import React from 'react';
 import styles from './SearchFilter.module.scss';
 
 interface FilterBtnProps {
@@ -7,6 +7,7 @@ interface FilterBtnProps {
   items: string;
   task: (items: string) => void;
   setPageNumber: (pageNumber: number) => void;
+  onClick: () => void;
 }
 
 const FilterBtn: React.FC<FilterBtnProps> = ({
@@ -15,6 +16,7 @@ const FilterBtn: React.FC<FilterBtnProps> = ({
   items,
   task,
   setPageNumber,
+  onClick,
 }) => {
   return (
     <div className={styles['filter-btn']}>
@@ -23,6 +25,7 @@ const FilterBtn: React.FC<FilterBtnProps> = ({
           onClick={() => {
             setPageNumber(1);
             task(items);
+            onClick();
           }}
           className="form-check-input"
           type="radio"

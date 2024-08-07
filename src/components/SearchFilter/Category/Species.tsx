@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FilterBtn from '../FilterBtn';
 import './Accordion.scss';
 
@@ -9,9 +9,28 @@ interface SpeciesProps {
 
 const Species: React.FC<SpeciesProps> = ({ setSpecies, setPageNumber }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const accordionRef = useRef<HTMLDivElement>(null);
+
   const handleButtonClick = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      accordionRef.current &&
+      !accordionRef.current.contains(event.target as Node)
+    ) {
+      setIsExpanded(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const species = [
     'Human',
     'Alien',
@@ -27,7 +46,10 @@ const Species: React.FC<SpeciesProps> = ({ setSpecies, setPageNumber }) => {
   ];
 
   return (
-    <div className={`accordion-item ${isExpanded ? 'expanded' : ''}`}>
+    <div
+      ref={accordionRef}
+      className={`accordion-item ${isExpanded ? 'expanded' : ''}`}
+    >
       <h3 className="accordion-header">
         <button
           className={`accordion-button ${isExpanded ? '' : 'collapsed'}`}
@@ -53,6 +75,7 @@ const Species: React.FC<SpeciesProps> = ({ setSpecies, setPageNumber }) => {
               name="species"
               index={index}
               items={items}
+              onClick={() => setIsExpanded(false)}
             />
           ))}
         </div>
