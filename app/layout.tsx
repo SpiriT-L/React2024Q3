@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import React from 'react';
-// import favicon from '../public/favicon.png';
 import ErrorBoundary from '../src/components/ErrorBoundary/ErrorBoundary';
 import Footer from '../src/components/Page/Footer/Footer';
 import Header from '../src/components/Page/Header/Header';
