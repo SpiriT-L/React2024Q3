@@ -5,6 +5,7 @@ export const THEME_LIGHT = 'light';
 export const THEME_DARK = 'dark';
 
 interface ThemeContextType {
+  setTheme(arg0: string): unknown;
   theme: string | null;
   change: (name: string) => void;
 }
@@ -12,6 +13,9 @@ interface ThemeContextType {
 const ThemeContext = React.createContext<ThemeContextType>({
   theme: null,
   change: () => {},
+  setTheme: function (): unknown {
+    throw new Error('Function not implemented.');
+  },
 });
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
