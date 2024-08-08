@@ -13,6 +13,7 @@ const Card: React.FC<CardProps> = ({ results, page }) => {
   if (results) {
     display = results.map(x => {
       const { id, name, image, gender, location, status } = x;
+      console.log(location?.name);
       return (
         <Link href={`${page}${id}`} key={id} className={styles.cardsItem}>
           <img className={styles.img} src={image} alt={name} />
@@ -24,7 +25,7 @@ const Card: React.FC<CardProps> = ({ results, page }) => {
             </p>
             <p>
               Location:
-              <span> {location.name}</span>
+              <span> {location?.name || 'Unknown'}</span> {}
             </p>
           </div>
           {(() => {
