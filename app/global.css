@@ -219,3 +219,8 @@ a:hover {
     opacity: 0.65;
   }
 }
+.not-found{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
