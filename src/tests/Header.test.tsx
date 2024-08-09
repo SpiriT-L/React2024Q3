@@ -1,26 +1,44 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import {
+  ThemeProvider,
+  THEME_DARK,
+  THEME_LIGHT,
+} from '../context/ThemeProvider';
+import Header from '../components/Page/Header/Header';
 
-import '@testing-library/jest-dom';
-import Footer from '../components/Page/Footer/Footer';
-import { expect, test } from 'vitest';
+// Мокаем контекст темы
+const MockThemeProvider = ({ theme, children }) => {
+  return <ThemeProvider value={{ theme }}>{children}</ThemeProvider>;
+};
 
-test('renders Footer component with links and images', () => {
-  render(<Footer />);
+describe('Header Component', () => {
+  test('renders Header with light theme', () => {
+    render(
+      <MockThemeProvider theme={THEME_LIGHT}>
+        <Header />
+      </MockThemeProvider>
+    );
 
-  const discordLink = screen.getByRole('link', { name: /discord/i });
-  const rssLink = screen.getByRole('link', { name: /rs school/i });
-  const githubLink = screen.getByRole('link', { name: /github/i });
+    expect(screen.getByText(/Rick & Morty/i)).toBeInTheDocument();
+    expect(screen.getByText(/Character/i)).toBeInTheDocument();
+    expect(screen.getByText(/Location/i)).toBeInTheDocument();
+    expect(screen.getByText(/Episodes/i)).toBeInTheDocument();
 
-  expect(discordLink).toBeInTheDocument();
-  expect(rssLink).toBeInTheDocument();
-  expect(githubLink).toBeInTheDocument();
+    const iconImg = screen.getByAltText('icon');
+  });
 
-  const discordImg = screen.getByAltText('Discord');
-  const rssImg = screen.getByAltText('RS School');
-  const githubImg = screen.getByAltText('GitHub');
+  test('renders Header with dark theme', () => {
+    render(
+      <MockThemeProvider theme={THEME_DARK}>
+        <Header />
+      </MockThemeProvider>
+    );
 
-  expect(discordImg).toBeInTheDocument();
-  expect(rssImg).toBeInTheDocument();
-  expect(githubImg).toBeInTheDocument();
+    expect(screen.getByText(/Rick & Morty/i)).toBeInTheDocument();
+    expect(screen.getByText(/Character/i)).toBeInTheDocument();
+    expect(screen.getByText(/Location/i)).toBeInTheDocument();
+    expect(screen.getByText(/Episodes/i)).toBeInTheDocument();
+
+    const iconImg = screen.getByAltText('icon');
+  });
 });
