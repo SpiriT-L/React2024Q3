@@ -28,7 +28,7 @@ global.fetch = vi.fn(url =>
       return Promise.reject(new Error('Unknown URL'));
     },
   })
-) as jest.Mock;
+) as unknown as jest.Mock;
 
 describe('Location', () => {
   it('fetches and displays character data', async () => {
@@ -46,7 +46,7 @@ describe('Location', () => {
         status: 404,
         json: () => Promise.resolve({}),
       })
-    ) as jest.Mock;
+    ) as unknown as jest.Mock;
 
     render(<Location />);
 
