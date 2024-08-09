@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
-export default function NotFound() {
+const Page = () => {
   return (
     <main>
       <div className="container not-found">
@@ -13,4 +12,6 @@ export default function NotFound() {
       </div>
     </main>
   );
-}
+};
+
+export default Page;
