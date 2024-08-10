@@ -1,0 +1,65 @@
+$bs-success: #198754;
+$bs-danger: #dc3545;
+$bs-secondary: #6c757d;
+
+.cards {
+  display: flex;
+}
+.cardsItem {
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  padding: 0 0 5px 0;
+  color: #000;
+  &:hover {
+    color: #000;
+  }
+  & h2 {
+    margin: 5px 0 10px 0;
+  }
+  & .img {
+    border-radius: 10px 10px 0 0;
+  }
+  & p {
+    font-weight: 700;
+    margin: 0;
+    & span {
+      font-weight: normal;
+      font-style: italic;
+    }
+  }
+  & .description {
+    padding: 0 10px 15px 10px;
+  }
+  & .badge {
+    display: inline;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    // width: 50px;
+    font-size: 0.75em;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    color: #fff;
+  }
+}
+.dead {
+  background: $bs-danger;
+}
+.active {
+  background: $bs-success;
+}
+.unknown {
+  background: $bs-secondary;
+}
+html[data-theme='dark'] {
+  .cardsItem {
+    color: #ccc;
+  }
+}
