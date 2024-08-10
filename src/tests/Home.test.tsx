@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Home } from '../views/Home/Home';
 
 describe('Home component', () => {
@@ -18,5 +18,33 @@ describe('Home component', () => {
     const searchInput = screen.getByPlaceholderText(/Search/i);
     fireEvent.change(searchInput, { target: { value: 'Morty' } });
     expect(searchInput.value).toBe('Morty');
+  });
+});
+
+global.fetch = vi.fn(() =>
+  Promise.resolve({
+    json: () =>
+      Promise.resolve({
+        info: { count: 1, pages: 1, next: null, prev: null },
+        results: [
+          {
+            id: 1,
+            name: 'Rick Sanchez',
+            status: 'Alive',
+            species: 'Human',
+            gender: 'Male',
+          },
+        ],
+      }),
+  })
+) as unknown as jest.Mock;
+
+describe('Home Component', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  test('renders Home component', () => {
+    render(<Home />);
   });
 });
