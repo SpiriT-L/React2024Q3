@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { Home } from '../views/Home/Home';
+import { Home } from '../../app/home/page';
 
 describe('Home component', () => {
   it('renders without crashing', () => {
