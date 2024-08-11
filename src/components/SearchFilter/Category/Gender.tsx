@@ -1,5 +1,5 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import FilterBtn from '../FilterBtn';
 import './Accordion.scss';
 
 interface GenderProps {
@@ -16,10 +16,11 @@ const Gender: React.FC<GenderProps> = ({ setPageNumber, setGender }) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
     if (
       accordionRef.current &&
-      !accordionRef.current.contains(event.target as Node) &&
-      !(event.target as HTMLElement).closest('.filter-btn')
+      !accordionRef.current.contains(target) &&
+      !(target.closest && target.closest('.filter-btn'))
     ) {
       setIsExpanded(false);
     }
@@ -57,15 +58,29 @@ const Gender: React.FC<GenderProps> = ({ setPageNumber, setGender }) => {
       >
         <div className="accordion-body">
           {genders.map((item, index) => (
-            <FilterBtn
-              task={setGender}
-              setPageNumber={setPageNumber}
-              key={index}
-              name="genders"
-              index={index}
-              items={item}
-              onClick={() => setIsExpanded(false)}
-            />
+            <div key={index} className="filter-btn">
+              <input
+                type="radio"
+                id={`gender-${index}`}
+                name="gender"
+                value={item}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setGender(item);
+                  setPageNumber(1);
+                }}
+              />
+              <label
+                htmlFor={`gender-${index}`}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setGender(item);
+                  setPageNumber(1);
+                }}
+              >
+                {item}
+              </label>
+            </div>
           ))}
         </div>
       </div>
