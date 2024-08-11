@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import FilterBtn from '../FilterBtn';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import './Accordion.scss';
 
 interface SpeciesProps {
@@ -16,9 +16,11 @@ const Species: React.FC<SpeciesProps> = ({ setSpecies, setPageNumber }) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
     if (
       accordionRef.current &&
-      !accordionRef.current.contains(event.target as Node)
+      !accordionRef.current.contains(target) &&
+      !(target.closest && target.closest('.filter-btn'))
     ) {
       setIsExpanded(false);
     }
@@ -68,15 +70,29 @@ const Species: React.FC<SpeciesProps> = ({ setSpecies, setPageNumber }) => {
       >
         <div className="accordion-body species">
           {species.map((items, index) => (
-            <FilterBtn
-              task={setSpecies}
-              setPageNumber={setPageNumber}
-              key={index}
-              name="species"
-              index={index}
-              items={items}
-              onClick={() => setIsExpanded(false)}
-            />
+            <div key={index} className="filter-btn">
+              <input
+                type="radio"
+                id={`species-${index}`}
+                name="species"
+                value={items}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setSpecies(items);
+                  setPageNumber(1);
+                }}
+              />
+              <label
+                htmlFor={`species-${index}`}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setSpecies(items);
+                  setPageNumber(1);
+                }}
+              >
+                {items}
+              </label>
+            </div>
           ))}
         </div>
       </div>
