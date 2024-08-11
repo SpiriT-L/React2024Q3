@@ -1,6 +1,6 @@
 'use client ';
 import React from 'react';
-import { Home } from '../src/views/Home/Home';
+import { Home } from './home/page';
 
 const PageHome: React.FC = () => {
   return (

@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Button from '../../components/Button/Button';
-import Cards from '../../components/Card/Cards';
-import Err from '../../components/ErrorBoundary/Error';
-import Pagination from '../../components/Pagination/Pagination';
-import Search from '../../components/Search/Search';
-import SearchFilter from '../../components/SearchFilter/SearchFilter';
-import { Character, Info } from '../../types/Interface';
+import Button from '../../src/components/Button/Button';
+import Cards from '../../src/components/Card/Cards';
+import Err from '../../src/components/ErrorBoundary/Error';
+import Pagination from '../../src/components/Pagination/Pagination';
+import Search from '../../src/components/Search/Search';
+import SearchFilter from '../../src/components/SearchFilter/SearchFilter';
+import { Character, Info } from '../../src/types/Interface';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
