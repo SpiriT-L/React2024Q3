@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import FilterBtn from '../FilterBtn';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import './Accordion.scss';
 
 interface StatusProps {
@@ -16,9 +16,11 @@ const Status: React.FC<StatusProps> = ({ setPageNumber, setStatus }) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
     if (
       accordionRef.current &&
-      !accordionRef.current.contains(event.target as Node)
+      !accordionRef.current.contains(target) &&
+      !(target.closest && target.closest('.filter-btn'))
     ) {
       setIsExpanded(false);
     }
@@ -56,15 +58,29 @@ const Status: React.FC<StatusProps> = ({ setPageNumber, setStatus }) => {
       >
         <div className="accordion-body">
           {status.map((items, index) => (
-            <FilterBtn
-              task={setStatus}
-              setPageNumber={setPageNumber}
-              key={index}
-              name="status"
-              index={index}
-              items={items}
-              onClick={() => setIsExpanded(false)}
-            />
+            <div key={index} className="filter-btn">
+              <input
+                type="radio"
+                id={`status-${index}`}
+                name="status"
+                value={items}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setStatus(items);
+                  setPageNumber(1);
+                }}
+              />
+              <label
+                htmlFor={`status-${index}`}
+                onClick={() => {
+                  setIsExpanded(false);
+                  setStatus(items);
+                  setPageNumber(1);
+                }}
+              >
+                {items}
+              </label>
+            </div>
           ))}
         </div>
       </div>
