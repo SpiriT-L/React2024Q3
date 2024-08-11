@@ -1,9 +1,8 @@
-// ErrorPageWrapper.tsx
 import React from 'react';
 import ErrorPage from './ErrorPage';
 
 interface ErrorPageWrapperProps {
-  routeError: Error | string; // Accept both Error and string types
+  routeError: Error | string;
 }
 
 const ErrorPageWrapper: React.FC<ErrorPageWrapperProps> = ({ routeError }) => {
