@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react';
 interface CountryInputProps {
   id: string;
   name: string;
+  labelName: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
@@ -11,12 +12,13 @@ interface CountryInputProps {
 const CountryInput: React.FC<CountryInputProps> = ({
   id,
   name,
+  labelName,
   value,
   onChange,
   required = false,
 }) => (
   <>
-    <label htmlFor={id}>{name}:</label>
+    <label htmlFor={id}>{labelName}:</label>
     <input
       type="text"
       id={id}

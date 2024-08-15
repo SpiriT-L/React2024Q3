@@ -1,8 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { FormData } from '../../types/iFormData';
+import CheckboxInput from '../Input/CheckboxInput';
+import CountryInput from '../Input/CountryInput';
 import EmailInput from '../Input/EmailInput';
+import FileInput from '../Input/FileInput';
 import NumberInput from '../Input/NumberInput';
 import PasswordInput from '../Input/PasswordInput';
+import RadioInput from '../Input/RadioInput';
 import TextInput from '../Input/TextInput';
 import styles from './Form.module.scss';
 
@@ -42,165 +46,99 @@ const Form: React.FC = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      {/* <label htmlFor="firstName">First Name:</label>
-      <input
-        type="text"
+      <TextInput
         id="firstName"
         name="firstName"
+        labelName="First Name"
         value={formData.firstName}
         onChange={handleChange}
         required
-      /> */}
-
-      <TextInput
-        id="firstName"
-        name="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
       />
 
-      {/* <label htmlFor="lastName">Last Name:</label>
-      <input
-        type="text"
+      <TextInput
         id="lastName"
         name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-      /> */}
-      <TextInput
-        id="lastName"
-        name="Last Name"
+        labelName="LastName"
         value={formData.lastName}
         onChange={handleChange}
         required
       />
-
-      {/* <label htmlFor="age">Age:</label>
-      <input
-        type="number"
-        id="age"
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
-        required
-      /> */}
 
       <NumberInput
         id="age"
-        name="Age"
+        name="age"
+        labelName="Age"
         value={formData.age}
         onChange={handleChange}
       />
 
-      {/* <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      /> */}
       <EmailInput
         id="email"
-        name="Email"
+        name="email"
+        labelName="Email"
         value={formData.email}
         onChange={handleChange}
       />
 
-      {/* <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      /> */}
-
       <PasswordInput
         id="password"
-        name="Password"
+        name="password"
+        labelName="Password"
         value={formData.password}
         onChange={handleChange}
       />
-
-      {/* <label htmlFor="confirmPassword">Confirm Password:</label>
-      <input
-        type="password"
+      <PasswordInput
         id="confirmPassword"
         name="confirmPassword"
+        labelName="Confirm Password"
         value={formData.confirmPassword}
-        onChange={handleChange}
-        required
-      /> */}
-      <PasswordInput
-        id="password"
-        name="Confirm Password"
-        value={formData.password}
         onChange={handleChange}
       />
 
       <label>Gender:</label>
-      <input
-        type="radio"
-        id="male"
-        name="gender"
-        value="male"
-        checked={formData.gender === 'male'}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="male">Male</label>
-      <input
-        type="radio"
-        id="female"
-        name="gender"
-        value="female"
-        checked={formData.gender === 'female'}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="female">Female</label>
+      <div className={styles.genderItems}>
+        <RadioInput
+          id="male"
+          name="gender"
+          labelName="Male"
+          value="male"
+          checked={formData.gender === 'male'}
+          onChange={handleChange}
+          required
+        />
+        <RadioInput
+          id="male"
+          name="gender"
+          labelName="Female"
+          value="male"
+          checked={formData.gender === 'male'}
+          onChange={handleChange}
+          required
+        />
+      </div>
 
-      <label htmlFor="country">Country:</label>
-      <input
-        type="text"
+      <CountryInput
         id="country"
         name="country"
-        list="countryList"
+        labelName="Country"
         value={formData.country}
         onChange={handleChange}
-        autoComplete="on"
         required
       />
-      <datalist id="countryList">
-        <option value="Belarus" />
-        <option value="Russia" />
-        <option value="Ukraine" />
-        <option value="Kazakhstan" />
-        <option value="USA" />
-      </datalist>
 
-      <label htmlFor="terms">
-        I accept the <a href="/terms">Terms and Conditions</a>:
-      </label>
-      <input
-        type="checkbox"
+      <CheckboxInput
         id="terms"
         name="terms"
+        labelName="I accept the Terms and Conditions"
         checked={formData.terms}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="profilePicture">Upload Image (png, jpeg):</label>
-      <input
-        type="file"
+      <FileInput
         id="profilePicture"
         name="profilePicture"
-        accept=".png, .jpeg"
+        labelName="Upload Image (png, jpeg)"
         onChange={handleChange}
         required
       />

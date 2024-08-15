@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react';
 interface CheckboxInputProps {
   id: string;
   name: string;
+  labelName: string;
   checked: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
@@ -11,6 +12,7 @@ interface CheckboxInputProps {
 const CheckboxInput: React.FC<CheckboxInputProps> = ({
   id,
   name,
+  labelName,
   checked,
   onChange,
   required = false,
@@ -24,7 +26,7 @@ const CheckboxInput: React.FC<CheckboxInputProps> = ({
       onChange={onChange}
       required={required}
     />
-    <label htmlFor={id}>{name}</label>
+    <label htmlFor={id}>{labelName}</label>
   </>
 );
 

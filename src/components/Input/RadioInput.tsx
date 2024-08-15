@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react';
 interface RadioInputProps {
   id: string;
   name: string;
+  labelName: string;
   value: string;
   checked: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -12,6 +13,7 @@ interface RadioInputProps {
 const RadioInput: React.FC<RadioInputProps> = ({
   id,
   name,
+  labelName,
   value,
   checked,
   onChange,
@@ -27,7 +29,7 @@ const RadioInput: React.FC<RadioInputProps> = ({
       onChange={onChange}
       required={required}
     />
-    <label htmlFor={id}>{value}</label>
+    <label htmlFor={id}>{labelName}</label>
   </>
 );
 
