@@ -86,14 +86,8 @@ const Form: React.FC = () => {
             id="password"
             name="password"
             labelName="Password"
+            confirmLabelName="Confirm Password"
             value={formData.password}
-            onChange={handleChange}
-          />
-          <PasswordInput
-            id="confirmPassword"
-            name="confirmPassword"
-            labelName="Confirm Password"
-            value={formData.confirmPassword}
             onChange={handleChange}
           />
 
