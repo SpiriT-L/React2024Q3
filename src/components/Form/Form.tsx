@@ -45,106 +45,110 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <TextInput
-        id="firstName"
-        name="firstName"
-        labelName="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
-        required
-      />
+    <section>
+      <div className="container">
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <TextInput
+            id="firstName"
+            name="firstName"
+            labelName="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
 
-      <TextInput
-        id="lastName"
-        name="lastName"
-        labelName="LastName"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-      />
+          <TextInput
+            id="lastName"
+            name="lastName"
+            labelName="LastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
 
-      <NumberInput
-        id="age"
-        name="age"
-        labelName="Age"
-        value={formData.age}
-        onChange={handleChange}
-      />
+          <NumberInput
+            id="age"
+            name="age"
+            labelName="Age"
+            value={formData.age}
+            onChange={handleChange}
+          />
 
-      <EmailInput
-        id="email"
-        name="email"
-        labelName="Email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+          <EmailInput
+            id="email"
+            name="email"
+            labelName="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
 
-      <PasswordInput
-        id="password"
-        name="password"
-        labelName="Password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <PasswordInput
-        id="confirmPassword"
-        name="confirmPassword"
-        labelName="Confirm Password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-      />
+          <PasswordInput
+            id="password"
+            name="password"
+            labelName="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <PasswordInput
+            id="confirmPassword"
+            name="confirmPassword"
+            labelName="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
 
-      <label>Gender:</label>
-      <div className={styles.genderItems}>
-        <RadioInput
-          id="male"
-          name="gender"
-          labelName="Male"
-          value="male"
-          checked={formData.gender === 'male'}
-          onChange={handleChange}
-          required
-        />
-        <RadioInput
-          id="male"
-          name="gender"
-          labelName="Female"
-          value="male"
-          checked={formData.gender === 'male'}
-          onChange={handleChange}
-          required
-        />
+          <label>Gender:</label>
+          <div className={styles.genderItems}>
+            <RadioInput
+              id="male"
+              name="gender"
+              labelName="Male"
+              value="male"
+              checked={formData.gender === 'male'}
+              onChange={handleChange}
+              required
+            />
+            <RadioInput
+              id="male"
+              name="gender"
+              labelName="Female"
+              value="male"
+              checked={formData.gender === 'male'}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <CountryInput
+            id="country"
+            name="country"
+            labelName="Country"
+            value={formData.country}
+            onChange={handleChange}
+            required
+          />
+
+          <CheckboxInput
+            id="terms"
+            name="terms"
+            labelName="I accept the Terms and Conditions"
+            checked={formData.terms}
+            onChange={handleChange}
+            required
+          />
+
+          <FileInput
+            id="profilePicture"
+            name="profilePicture"
+            labelName="Upload Image (png, jpeg)"
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit">Register</button>
+        </form>
       </div>
-
-      <CountryInput
-        id="country"
-        name="country"
-        labelName="Country"
-        value={formData.country}
-        onChange={handleChange}
-        required
-      />
-
-      <CheckboxInput
-        id="terms"
-        name="terms"
-        labelName="I accept the Terms and Conditions"
-        checked={formData.terms}
-        onChange={handleChange}
-        required
-      />
-
-      <FileInput
-        id="profilePicture"
-        name="profilePicture"
-        labelName="Upload Image (png, jpeg)"
-        onChange={handleChange}
-        required
-      />
-
-      <button type="submit">Register</button>
-    </form>
+    </section>
   );
 };
 
