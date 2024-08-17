@@ -4,8 +4,8 @@ import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <div className="container">
-      <header className={styles.header}>
+    <header className={styles.header}>
+      <div className="container">
         <nav className={styles.nav}>
           <ul className={styles.menu}>
             <li className={styles.menuItem}>
@@ -19,8 +19,8 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };
 
