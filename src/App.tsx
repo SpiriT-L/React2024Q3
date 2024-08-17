@@ -6,6 +6,7 @@ import Controlled from './pages/controlled/controlled';
 import Home from './pages/home/home';
 import Uncontrolled from './pages/uncontrolled/uncontrolled';
 import store from './store/store';
+import Footer from './ui/Footer/Footer';
 import Header from './ui/Header/Header';
 // import Uncontrolled from './pages/uncontrolled/uncontrolled';
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Route path="/uncontrolled" element={<Uncontrolled />} />
           <Route path="/controlled" element={<Controlled />} />
         </Routes>
+        <Footer />
       </Router>
     </Provider>
   );
