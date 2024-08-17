@@ -6,12 +6,14 @@ import Controlled from './pages/controlled/controlled';
 import Home from './pages/home/home';
 import Uncontrolled from './pages/uncontrolled/uncontrolled';
 import store from './store/store';
+import Header from './ui/Header/Header';
 // import Uncontrolled from './pages/uncontrolled/uncontrolled';
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/uncontrolled" element={<Uncontrolled />} />

@@ -1,0 +1,30 @@
+.header {
+  background-color: #333;
+  padding: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.menuItem {
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #f0a500;
+    }
+  }
+}
