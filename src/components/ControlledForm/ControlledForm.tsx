@@ -96,7 +96,7 @@ const ControlledForm: React.FC = () => {
                 <Controller
                   name="age"
                   control={control}
-                  defaultValue=""
+                  defaultValue={0}
                   rules={{ required: true, min: 0 }}
                   render={({ field }) => (
                     <input className={styles.input} type="number" {...field} />
