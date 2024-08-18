@@ -1,31 +1,42 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
+import styles from './Input.module.scss';
 
 interface FileInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  errors: FieldErrors<FormData>;
 }
 
 const FileInput: React.FC<FileInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  onChange,
-  required = false,
+  label,
+  errors,
 }) => (
-  <>
-    <label htmlFor={id}>{labelName}:</label>
-    <input
-      type="file"
-      id={id}
+  <div className={styles.inputBlock}>
+    <label className={styles.label} htmlFor={name}>
+      {label}
+    </label>
+    <Controller
       name={name}
-      accept=".png, .jpeg"
-      onChange={onChange}
-      required={required}
+      control={control}
+      defaultValue={undefined}
+      render={({ field }) => (
+        <input
+          className={styles.input}
+          type="file"
+          accept="image/png, image/jpeg"
+          onChange={(e) => field.onChange(e.target.files)}
+        />
+      )}
     />
-  </>
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
 );
 
 export default FileInput;
