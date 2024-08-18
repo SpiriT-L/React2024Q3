@@ -1,65 +1,63 @@
-import React, { useRef, useState } from 'react';
+import { useFormik } from 'formik';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 import { updateForm } from '../../slices/formSlice';
 import { addImage } from '../../slices/imageSlice';
 import { RootState } from '../../store/store';
+import { FormData } from '../../types/iFormData';
 import styles from './UncontrolledForm.module.scss';
 
 const UncontrolledForm: React.FC = () => {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const ageInputRef = useRef<HTMLInputElement>(null);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordInputRef = useRef<HTMLInputElement>(null);
-  const genderInputRef = useRef<HTMLInputElement>(null);
-  const termsInputRef = useRef<HTMLInputElement>(null);
-  const imageInputRef = useRef<HTMLInputElement>(null);
-  const countryInputRef = useRef<HTMLInputElement>(null);
-
-  const [errors, setErrors] = useState<string[]>([]);
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const dispatch = useDispatch();
   const countries = useSelector(
     (state: RootState) => state.countries.countries,
   );
   const navigate = useNavigate();
 
-  const validateForm = () => {
-    const newErrors: string[] = [];
-    const name = nameInputRef.current?.value;
-    const age = ageInputRef.current?.value;
-    // const email = emailInputRef.current?.value;
-    const password = passwordInputRef.current?.value;
-    const confirmPassword = confirmPasswordInputRef.current?.value;
-    const terms = termsInputRef.current?.checked;
-
-    if (!name || !/^[A-Z]/.test(name)) {
-      newErrors.push('Name must start with an uppercase letter.');
-    }
-    if (!age || isNaN(Number(age)) || Number(age) < 0) {
-      newErrors.push('Age must be a positive number.');
-    }
-    if (!password || !confirmPassword || password !== confirmPassword) {
-      newErrors.push('Passwords must match.');
-    }
-    if (password && !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(password)) {
-      newErrors.push(
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .matches(/^[A-Z]/, 'Name must start with an uppercase letter.')
+      .required('Name is required'),
+    age: Yup.number()
+      .positive('Age must be a positive number.')
+      .required('Age is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .matches(
+        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/,
         'Password must contain at least one digit, one uppercase letter, one lowercase letter, and one special character.',
-      );
-    }
-    if (!terms) {
-      newErrors.push('You must accept the terms and conditions.');
-    }
+      )
+      .required('Password is required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Confirm Password is required'),
+    gender: Yup.string().required('Gender is required'),
+    termsAccepted: Yup.boolean().oneOf(
+      [true],
+      'You must accept the terms and conditions.',
+    ),
+    country: Yup.string().required('Country is required'),
+  });
 
-    setErrors(newErrors);
-    return newErrors.length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      const imageFile = imageInputRef.current?.files?.[0];
+  const formik = useFormik<FormData>({
+    initialValues: {
+      name: '',
+      age: 0,
+      email: '',
+      password: '',
+      confirmPassword: '',
+      gender: '',
+      image: null,
+      country: '',
+      termsAccepted: false,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      const imageFile = values.image;
       if (
         imageFile &&
         (imageFile.type === 'image/png' || imageFile.type === 'image/jpeg')
@@ -70,24 +68,11 @@ const UncontrolledForm: React.FC = () => {
         };
         reader.readAsDataURL(imageFile);
       }
-      dispatch(
-        updateForm({
-          name: nameInputRef.current?.value || '',
-          age: Number(ageInputRef.current?.value) || 0,
-          email: emailInputRef.current?.value || '',
-          gender: genderInputRef.current?.value || '',
-          termsAccepted: termsInputRef.current?.checked || false,
-          country: countryInputRef.current?.value || '',
-        }),
-      );
+      dispatch(updateForm(values));
       console.log('Form submitted successfully!');
       navigate('/');
-    }
-  };
-
-  const handleTermsChange = () => {
-    setIsTermsAccepted(termsInputRef.current?.checked || false);
-  };
+    },
+  });
 
   return (
     <>
@@ -96,7 +81,7 @@ const UncontrolledForm: React.FC = () => {
         <div className="container">
           <h2>Uncontrolled Form</h2>
           <div className={styles.formDataBlock}>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="name">
                   Name:
@@ -105,9 +90,11 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="text"
                   id="name"
-                  ref={nameInputRef}
-                  required
+                  {...formik.getFieldProps('name')}
                 />
+                {formik.touched.name && formik.errors.name ? (
+                  <div className={styles.error}>{formik.errors.name}</div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="age">
@@ -117,9 +104,11 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="number"
                   id="age"
-                  ref={ageInputRef}
-                  required
+                  {...formik.getFieldProps('age')}
                 />
+                {formik.touched.age && formik.errors.age ? (
+                  <div className={styles.error}>{formik.errors.age}</div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="email">
@@ -129,9 +118,11 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="email"
                   id="email"
-                  ref={emailInputRef}
-                  required
+                  {...formik.getFieldProps('email')}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className={styles.error}>{formik.errors.email}</div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="password">
@@ -141,9 +132,11 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="password"
                   id="password"
-                  ref={passwordInputRef}
-                  required
+                  {...formik.getFieldProps('password')}
                 />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className={styles.error}>{formik.errors.password}</div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="confirmPassword">
@@ -153,9 +146,14 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="password"
                   id="confirmPassword"
-                  ref={confirmPasswordInputRef}
-                  required
+                  {...formik.getFieldProps('confirmPassword')}
                 />
+                {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? (
+                  <div className={styles.error}>
+                    {formik.errors.confirmPassword}
+                  </div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
                 <label className={styles.label}>Gender:</label>
@@ -164,8 +162,7 @@ const UncontrolledForm: React.FC = () => {
                   id="male"
                   name="gender"
                   value="Male"
-                  ref={genderInputRef}
-                  required
+                  {...formik.getFieldProps('gender')}
                 />{' '}
                 Male
                 <input
@@ -173,12 +170,13 @@ const UncontrolledForm: React.FC = () => {
                   id="female"
                   name="gender"
                   value="Female"
-                  ref={genderInputRef}
-                  required
+                  {...formik.getFieldProps('gender')}
                 />{' '}
                 Female
+                {formik.touched.gender && formik.errors.gender ? (
+                  <div className={styles.error}>{formik.errors.gender}</div>
+                ) : null}
               </div>
-
               <div className={styles.inputBlock}>
                 <label className={styles.label} htmlFor="image">
                   Upload Image:
@@ -187,9 +185,13 @@ const UncontrolledForm: React.FC = () => {
                   className={styles.input}
                   type="file"
                   id="image"
-                  ref={imageInputRef}
+                  onChange={(event) => {
+                    formik.setFieldValue(
+                      'image',
+                      event.currentTarget.files?.[0],
+                    );
+                  }}
                   accept="image/png, image/jpeg"
-                  required
                 />
               </div>
               <div className={styles.inputBlock}>
@@ -201,38 +203,38 @@ const UncontrolledForm: React.FC = () => {
                   type="text"
                   id="country"
                   list="countries"
-                  ref={countryInputRef}
-                  required
+                  {...formik.getFieldProps('country')}
                 />
                 <datalist id="countries">
                   {countries.map((country) => (
                     <option key={country} value={country} />
                   ))}
                 </datalist>
+                {formik.touched.country && formik.errors.country ? (
+                  <div className={styles.error}>{formik.errors.country}</div>
+                ) : null}
               </div>
               <div className={styles.inputBlock}>
-                <label className={styles.label} htmlFor="terms">
+                <label className={styles.label} htmlFor="termsAccepted">
                   Accept Terms and Conditions:
                 </label>
                 <input
                   type="checkbox"
-                  id="terms"
-                  ref={termsInputRef}
-                  onChange={handleTermsChange}
-                  required
+                  id="termsAccepted"
+                  {...formik.getFieldProps('termsAccepted')}
                 />
+                {formik.touched.termsAccepted && formik.errors.termsAccepted ? (
+                  <div className={styles.error}>
+                    {formik.errors.termsAccepted}
+                  </div>
+                ) : null}
               </div>
-              {errors.length > 0 && (
-                <div className={styles.error}>
-                  {errors.map((error, index) => (
-                    <p key={index}>{error}</p>
-                  ))}
-                </div>
-              )}
               <button
                 type="submit"
-                disabled={!isTermsAccepted}
-                className={!isTermsAccepted ? styles.disabledButton : ''}
+                disabled={!formik.values.termsAccepted}
+                className={
+                  !formik.values.termsAccepted ? styles.disabledButton : ''
+                }
               >
                 Submit
               </button>
