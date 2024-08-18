@@ -91,6 +91,7 @@ const UncontrolledForm: React.FC = () => {
 
   return (
     <>
+      <main />
       <section className={styles.sectionControlledForm}>
         <div className="container">
           <h2>Uncontrolled Form</h2>

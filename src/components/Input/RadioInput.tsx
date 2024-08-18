@@ -1,36 +1,49 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
+import styles from './Input.module.scss';
 
 interface RadioInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  value: string;
-  checked: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  options: string[];
+  errors: FieldErrors<FormData>;
 }
 
 const RadioInput: React.FC<RadioInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  value,
-  checked,
-  onChange,
-  required = false,
+  label,
+  options,
+  errors,
 }) => (
-  <>
-    <input
-      type="radio"
-      id={id}
+  <div className={styles.inputBlock}>
+    <label className={styles.label}>{label}</label>
+    <Controller
       name={name}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-      required={required}
+      control={control}
+      defaultValue=""
+      render={({ field }) => (
+        <>
+          {options.map((option) => (
+            <label key={option}>
+              <input
+                type="radio"
+                value={option}
+                checked={field.value === option}
+                onChange={() => field.onChange(option)}
+              />{' '}
+              {option}
+            </label>
+          ))}
+        </>
+      )}
     />
-    <label htmlFor={id}>{labelName}</label>
-  </>
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
 );
 
 export default RadioInput;

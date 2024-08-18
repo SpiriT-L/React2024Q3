@@ -1,58 +1,44 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
 import styles from './Input.module.scss';
 
 interface NumberInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  errors: FieldErrors<FormData>;
 }
 
 const NumberInput: React.FC<NumberInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  value,
-  onChange,
-  required = false,
-}) => {
-  const [error, setError] = useState('');
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    onChange(e);
-
-    if (newValue === '') {
-      setError('The field must not be empty.');
-    } else if (isNaN(Number(newValue))) {
-      setError(`It's not the number that's entered.`);
-    } else if (Number(newValue) < 0) {
-      setError('The number must not be negative.');
-    } else if (Number(newValue) >= 121) {
-      setError('Your age cannot be more than 120.');
-    } else {
-      setError('');
-    }
-  };
-
-  return (
-    <>
-      <div className={styles.inputBlock}>
-        <label htmlFor={id}>{labelName}:</label>
+  label,
+  errors,
+}) => (
+  <div className={styles.inputBlock}>
+    <label className={styles.label} htmlFor={name}>
+      {label}
+    </label>
+    <Controller
+      name={name}
+      control={control}
+      defaultValue={0}
+      render={({ field }) => (
         <input
+          className={styles.input}
           type="number"
-          id={id}
-          name={name}
-          value={value}
-          onChange={handleChange}
-          required={required}
+          {...field}
+          value={
+            field.value !== undefined && field.value !== null ? field.value : ''
+          }
         />
-        {error && <p className={styles.invalid}>{error}</p>}
-      </div>
-    </>
-  );
-};
+      )}
+    />
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
+);
 
 export default NumberInput;

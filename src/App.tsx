@@ -8,7 +8,6 @@ import Uncontrolled from './pages/uncontrolled/uncontrolled';
 import store from './store/store';
 import Footer from './ui/Footer/Footer';
 import Header from './ui/Header/Header';
-// import Uncontrolled from './pages/uncontrolled/uncontrolled';
 
 const App: React.FC = () => {
   return (

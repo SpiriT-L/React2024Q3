@@ -1,42 +1,55 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
+import styles from './Input.module.scss';
 
 interface CountryInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  countries: string[];
+  errors: FieldErrors<FormData>;
 }
 
 const CountryInput: React.FC<CountryInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  value,
-  onChange,
-  required = false,
+  label,
+  countries,
+  errors,
 }) => (
-  <>
-    <label htmlFor={id}>{labelName}:</label>
-    <input
-      type="text"
-      id={id}
+  <div className={styles.inputBlock}>
+    <label className={styles.label} htmlFor={name}>
+      {label}
+    </label>
+    <Controller
       name={name}
-      list="countryList"
-      value={value}
-      onChange={onChange}
-      autoComplete="on"
-      required={required}
+      control={control}
+      defaultValue=""
+      render={({ field }) => (
+        <>
+          <input
+            className={styles.input}
+            list="countries"
+            {...field}
+            value={
+              typeof field.value === 'string' || typeof field.value === 'number'
+                ? field.value
+                : ''
+            }
+          />
+          <datalist id="countries">
+            {countries.map((country) => (
+              <option key={country} value={country} />
+            ))}
+          </datalist>
+        </>
+      )}
     />
-    <datalist id="countryList">
-      <option value="Belarus" />
-      <option value="Russia" />
-      <option value="Ukraine" />
-      <option value="Kazakhstan" />
-      <option value="USA" />
-    </datalist>
-  </>
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
 );
 
 export default CountryInput;

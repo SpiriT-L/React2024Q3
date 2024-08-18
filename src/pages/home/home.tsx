@@ -17,18 +17,18 @@ const Home: React.FC = () => {
     !formData.termsAccepted;
 
   return (
-    <main className={styles.main}>
-      <div className="container">
-        <h2>Home</h2>
+    <main className="main">
+      <section className={styles.sectionHome}>
+        <div className="container">
+          <h2>Home</h2>
 
-        <section className={styles.sectionHome}>
           <div className={styles.formDataBlock}>
             {isFormDataEmpty ? (
               <div>
-                <p>
+                <p className={styles.formDataItem}>
                   <Link to="/uncontrolled">Uncontrolled form</Link>
                 </p>
-                <p>
+                <p className={styles.formDataItem}>
                   <Link to="/controlled">Controlled form</Link>
                 </p>
               </div>
@@ -67,8 +67,8 @@ const Home: React.FC = () => {
               </>
             )}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
   );
 };

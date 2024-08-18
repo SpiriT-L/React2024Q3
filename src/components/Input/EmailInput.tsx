@@ -1,53 +1,46 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
 import styles from './Input.module.scss';
 
 interface EmailInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  errors: FieldErrors<FormData>;
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  value,
-  onChange,
-  required = false,
-}) => {
-  const [error, setError] = useState('');
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    onChange(e);
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(newValue)) {
-      setError('Enter a valid email.');
-    } else {
-      setError('');
-    }
-  };
-
-  return (
-    <>
-      <div className={styles.inputBlock}>
-        <label htmlFor={id}>{labelName}:</label>
+  label,
+  errors,
+}) => (
+  <div className={styles.inputBlock}>
+    <label className={styles.label} htmlFor={name}>
+      {label}
+    </label>
+    <Controller
+      name={name}
+      control={control}
+      defaultValue=""
+      render={({ field }) => (
         <input
+          className={styles.input}
           type="email"
-          id={id}
-          name={name}
-          value={value}
-          onChange={handleChange}
-          required={required}
+          {...field}
+          value={
+            typeof field.value === 'string' || typeof field.value === 'number'
+              ? field.value
+              : ''
+          }
         />
-        {error && <p className={styles.invalid}>{error}</p>}
-      </div>
-    </>
-  );
-};
+      )}
+    />
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
+);
 
 export default EmailInput;

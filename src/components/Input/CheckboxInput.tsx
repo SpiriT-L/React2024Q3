@@ -1,33 +1,48 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { FormData } from '../../types/iFormData';
+import styles from './Input.module.scss';
 
 interface CheckboxInputProps {
-  id: string;
-  name: string;
-  labelName: string;
-  checked: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
+  control: Control<FormData>;
+  name: keyof FormData;
+  label: string;
+  handleTermsChange: () => void;
+  errors: FieldErrors<FormData>;
 }
 
 const CheckboxInput: React.FC<CheckboxInputProps> = ({
-  id,
+  control,
   name,
-  labelName,
-  checked,
-  onChange,
-  required = false,
+  label,
+  handleTermsChange,
+  errors,
 }) => (
-  <>
-    <input
-      type="checkbox"
-      id={id}
+  <div className={styles.inputBlock}>
+    <label className={styles.label} htmlFor={name}>
+      {label}
+    </label>
+    <Controller
       name={name}
-      checked={checked}
-      onChange={onChange}
-      required={required}
+      control={control}
+      defaultValue={false}
+      render={({ field }) => (
+        <input
+          type="checkbox"
+          {...field}
+          checked={!!field.value}
+          onChange={(e) => {
+            field.onChange(e.target.checked);
+            handleTermsChange();
+          }}
+          value={undefined}
+        />
+      )}
     />
-    <label htmlFor={id}>{labelName}</label>
-  </>
+    {errors[name] && (
+      <p className={styles.error}>{String(errors[name]?.message)}</p>
+    )}
+  </div>
 );
 
 export default CheckboxInput;
