@@ -40,7 +40,7 @@ export default tsEslint.config(
           'tsconfig.json',
           'tsconfig.node.json',
           'src/vite-env.d.ts',
-          '@typescript-eslint/parser',
+          'typescriptParser',
         ],
       },
     },
