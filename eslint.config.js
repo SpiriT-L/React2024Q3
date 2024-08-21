@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import eslintReact from 'eslint-plugin-react';
-import reactPlugin from 'eslint-plugin-react';
 import eslintReactHooks from 'eslint-plugin-react-hooks';
 import eslintReactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
@@ -20,7 +19,7 @@ export default tsEslint.config(
     },
     settings: {
       react: {
-        version: 'detect', // Automatically detect the React version
+        version: 'detect',
       },
     },
   },
@@ -37,7 +36,12 @@ export default tsEslint.config(
         ...globals.es2020,
       },
       parserOptions: {
-        project: ['tsconfig.json', 'tsconfig.node.json', 'src/vite-env.d.ts'],
+        project: [
+          'tsconfig.json',
+          'tsconfig.node.json',
+          'src/vite-env.d.ts',
+          '@typescript-eslint/parser',
+        ],
       },
     },
   },
