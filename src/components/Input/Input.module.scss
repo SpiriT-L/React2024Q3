@@ -1,0 +1,69 @@
+.inputBlock {
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 95%;
+}
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='file'],
+input[type='radio'],
+input[type='checkbox'],
+datalist {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.genderItems {
+  display: flex;
+  flex-direction: row;
+}
+input[type='radio'],
+input[type='checkbox'] {
+  width: auto;
+  margin-right: 10px;
+}
+.invalid {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: small;
+}
+.passwordStrength {
+  font-size: small;
+  padding: 0;
+  margin: 0;
+}
+.weak {
+  color: red;
+}
+.error {
+  color: red;
+}
+.strong {
+  color: green;
+}

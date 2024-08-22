@@ -1,0 +1,25 @@
+.footer {
+  height: 4.375rem;
+  border-top: 2px solid #ccc;
+  margin-top: 50px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.footerBlock {
+  height: 4.375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.discordImg {
+  width: 30px;
+}
+.rssImg {
+  width: 50px;
+}
+.githubImg {
+  width: 30px;
+}
